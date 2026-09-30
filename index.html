@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ben's Christmas List 🎄</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #101713;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      margin: auto;
+      padding: 45px 0 60px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .christmas {
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #b8c7bc;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 70px);
+      margin: 10px 0;
+      line-height: 1;
+    }
+
+    .subtitle {
+      color: #aeb9b1;
+      font-size: 17px;
+    }
+
+    .ranges {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .range-button {
+      border: 1px solid #34423a;
+      background: #18221c;
+      color: white;
+      padding: 18px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .range-button:hover {
+      transform: translateY(-2px);
+      border-color: #d7e4da;
+    }
+
+    .range-button.active {
+      background: #d7e4da;
+      color: #101713;
+      border-color: #d7e4da;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .count {
+      color: #9eaaa2;
+      font-size: 14px;
+    }
+
+    .items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .item {
+      background: #18221c;
+      border: 1px solid #34423a;
+      border-radius: 18px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: 0.2s;
+    }
+
+    .item:hover {
+      transform: translateY(-3px);
+      border-color: #68796e;
+    }
+
+    .icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 15px;
+      background: #253229;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      flex-shrink: 0;
+    }
+
+    .item h3 {
+      margin: 0 0 5px;
+      font-size: 19px;
+    }
+
+    .price {
+      color: #d7e4da;
+      font-weight: bold;
+    }
+
+    .category {
+      color: #929e96;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #77837b;
+      margin-top: 40px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 650px) {
+      .ranges {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .items {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        padding-top: 30px;
+      }
+
+      .ranges {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <div class="christmas">🎄 Christmas 2026</div>
+      <h1>Ben's Christmas List</h1>
+      <div class="subtitle">
+        Tap a price range to see what I'm looking for.
+      </div>
+    </div>
+
+    <div class="ranges">
+
+      <button class="range-button active" onclick="showItems('under50', this)">
+        Under $50
+      </button>
+
+      <button class="range-button" onclick="showItems('50to100', this)">
+        $50–$100
+      </button>
+
+      <button class="range-button" onclick="showItems('100plus', this)">
+        $100+
+      </button>
+
+      <button class="range-button" onclick="showItems('all', this)">
+        Everything
+      </button>
+
+    </div>
+
+    <div class="section-title">
+      <h2 id="title">Under $50</h2>
+      <div class="count" id="count"></div>
+    </div>
+
+    <div class="items" id="items"></div>
+
+    <div class="footer">
+      🎁 Thanks for checking out my Christmas list!
+    </div>
+
+  </div>
+
+  <script>
+
+    const gifts = [
+
+      {
+        name: "Men's PSD",
+        price: "Under $50",
+        category: "Clothing",
+        icon: "🩲"
+      },
+
+      {
+        name: "Jorts",
+        price: "Under $50",
+        category: "Clothing",
+        icon: "🩳"
+      },
+
+      {
+        name: "Quarter Zips",
+        price: "Under $50",
+        category: "Clothing",
+        icon: "👕"
+      },
+
+      {
+        name: "Sambas",
+        price: "$50–$100",
+        category: "Shoes",
+        icon: "👟"
+      },
+
+      {
+        name: "Dunks",
+        price: "$50–$100",
+        category: "Shoes",
+        icon: "👟"
+      },
+
+      {
+        name: "ASICS GEL-KAYANO 14",
+        price: "$100+",
+        category: "Shoes / Running",
+        icon: "🏃"
+      },
+
+      {
+        name: "Birkenstock Bostons",
+        price: "$100+",
+        category: "Shoes",
+        icon: "🩴"
+      }
+
+    ];
+
+
+    function showItems(range, button) {
+
+      const itemsContainer = document.getElementById("items");
+      const title = document.getElementById("title");
+      const count = document.getElementById("count");
+
+      document.querySelectorAll(".range-button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      let filteredItems;
+
+      if (range === "all") {
+        filteredItems = gifts;
+        title.textContent = "Everything";
+      }
+
+      else {
+        filteredItems = gifts.filter(item => {
+
+          if (range === "under50") {
+            return item.price === "Under $50";
+          }
+
+          if (range === "50to100") {
+            return item.price === "$50–$100";
+          }
+
+          if (range === "100plus") {
+            return item.price === "$100+";
+          }
+
+        });
+
+        if (range === "under50") {
+          title.textContent = "Under $50";
+        }
+
+        if (range === "50to100") {
+          title.textContent = "$50–$100";
+        }
+
+        if (range === "100plus") {
+          title.textContent = "$100+";
+        }
+      }
+
+      count.textContent = filteredItems.length + " items";
+
+      itemsContainer.innerHTML = "";
+
+      filteredItems.forEach(item => {
+
+        const card = document.createElement("div");
+
+        card.className = "item";
+
+        card.innerHTML = `
+          <div class="icon">${item.icon}</div>
+
+          <div>
+            <h3>${item.name}</h3>
+            <div class="price">${item.price}</div>
+            <div class="category">${item.category}</div>
+          </div>
+        `;
+
+        itemsContainer.appendChild(card);
+
+      });
+
+    }
+
+
+    showItems(
+      "under50",
+      document.querySelector(".range-button")
+    );
+
+  </script>
+
+</body>
+</html>
