@@ -15,7 +15,7 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top, #24382c 0%, #111812 48%, #0b100d 100%);
+        radial-gradient(circle at top, #2c4435 0%, #111812 48%, #080d0a 100%);
       color: white;
       min-height: 100vh;
       overflow-x: hidden;
@@ -24,10 +24,11 @@
     .page {
       position: relative;
       min-height: 100vh;
-      padding: 30px 0 60px;
+      padding: 30px 0 65px;
       overflow: hidden;
     }
 
+    /* Snow */
     .snow {
       position: fixed;
       inset: 0;
@@ -38,32 +39,91 @@
 
     .flake {
       position: absolute;
-      top: -30px;
+      top: -40px;
       color: white;
-      opacity: .65;
-      animation: fall linear infinite;
+      opacity: 0.7;
+      animation: snowFall linear infinite;
+      user-select: none;
     }
 
-    .flake:nth-child(1) { left: 4%; animation-duration: 9s; animation-delay: 0s; }
-    .flake:nth-child(2) { left: 13%; animation-duration: 12s; animation-delay: 2s; }
-    .flake:nth-child(3) { left: 24%; animation-duration: 10s; animation-delay: 4s; }
-    .flake:nth-child(4) { left: 36%; animation-duration: 13s; animation-delay: 1s; }
-    .flake:nth-child(5) { left: 48%; animation-duration: 11s; animation-delay: 3s; }
-    .flake:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 5s; }
-    .flake:nth-child(7) { left: 72%; animation-duration: 9s; animation-delay: 2s; }
-    .flake:nth-child(8) { left: 84%; animation-duration: 12s; animation-delay: 4s; }
-    .flake:nth-child(9) { left: 94%; animation-duration: 10s; animation-delay: 1s; }
+    .flake:nth-child(1) {
+      left: 4%;
+      font-size: 17px;
+      animation-duration: 8s;
+      animation-delay: 0s;
+    }
 
-    @keyframes fall {
-      from {
-        transform: translateY(-30px) rotate(0deg);
+    .flake:nth-child(2) {
+      left: 12%;
+      font-size: 11px;
+      animation-duration: 11s;
+      animation-delay: 2s;
+    }
+
+    .flake:nth-child(3) {
+      left: 22%;
+      font-size: 20px;
+      animation-duration: 10s;
+      animation-delay: 4s;
+    }
+
+    .flake:nth-child(4) {
+      left: 34%;
+      font-size: 13px;
+      animation-duration: 13s;
+      animation-delay: 1s;
+    }
+
+    .flake:nth-child(5) {
+      left: 46%;
+      font-size: 18px;
+      animation-duration: 9s;
+      animation-delay: 3s;
+    }
+
+    .flake:nth-child(6) {
+      left: 58%;
+      font-size: 12px;
+      animation-duration: 12s;
+      animation-delay: 5s;
+    }
+
+    .flake:nth-child(7) {
+      left: 70%;
+      font-size: 19px;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+
+    .flake:nth-child(8) {
+      left: 82%;
+      font-size: 14px;
+      animation-duration: 11s;
+      animation-delay: 4s;
+    }
+
+    .flake:nth-child(9) {
+      left: 94%;
+      font-size: 17px;
+      animation-duration: 10s;
+      animation-delay: 1s;
+    }
+
+    @keyframes snowFall {
+      0% {
+        transform: translateY(-40px) translateX(0) rotate(0deg);
       }
 
-      to {
-        transform: translateY(110vh) rotate(360deg);
+      50% {
+        transform: translateY(50vh) translateX(22px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(110vh) translateX(-18px) rotate(360deg);
       }
     }
 
+    /* Main container */
     .container {
       position: relative;
       z-index: 2;
@@ -71,30 +131,32 @@
       margin: auto;
     }
 
+    /* Top bar */
     .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 15px;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
+      animation: fadeDown 0.7s ease both;
     }
 
     .home-button {
       display: inline-block;
       padding: 11px 16px;
       border-radius: 12px;
-      background: #18221c;
+      background: rgba(24, 34, 28, 0.9);
       border: 1px solid #34423a;
       color: white;
       text-decoration: none;
       font-size: 14px;
       font-weight: bold;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     .home-button:hover {
       transform: translateY(-2px);
-      border-color: #aebdb2;
+      border-color: #d7e4da;
     }
 
     .year {
@@ -105,46 +167,62 @@
       font-weight: bold;
     }
 
+    /* Christmas lights */
     .lights {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
+      animation: fadeDown 0.8s ease 0.1s both;
     }
 
     .light {
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
       background: #d7e4da;
-      box-shadow: 0 0 12px rgba(215, 228, 218, .65);
-      animation: glow 1.8s infinite alternate;
+      box-shadow: 0 0 10px rgba(215, 228, 218, 0.55);
+      animation: lightPulse 1.5s infinite alternate;
     }
 
-    .light:nth-child(2) { animation-delay: .2s; }
-    .light:nth-child(3) { animation-delay: .4s; }
-    .light:nth-child(4) { animation-delay: .6s; }
-    .light:nth-child(5) { animation-delay: .8s; }
-    .light:nth-child(6) { animation-delay: 1s; }
-    .light:nth-child(7) { animation-delay: 1.2s; }
-    .light:nth-child(8) { animation-delay: 1.4s; }
+    .light:nth-child(2) { animation-delay: .15s; }
+    .light:nth-child(3) { animation-delay: .30s; }
+    .light:nth-child(4) { animation-delay: .45s; }
+    .light:nth-child(5) { animation-delay: .60s; }
+    .light:nth-child(6) { animation-delay: .75s; }
+    .light:nth-child(7) { animation-delay: .90s; }
+    .light:nth-child(8) { animation-delay: 1.05s; }
 
-    @keyframes glow {
+    @keyframes lightPulse {
       from {
-        opacity: .45;
-        transform: scale(.9);
+        opacity: .4;
+        transform: scale(.88);
       }
 
       to {
         opacity: 1;
-        transform: scale(1.15);
+        transform: scale(1.18);
       }
     }
 
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header */
     .header {
       text-align: center;
       margin-bottom: 30px;
+      animation: headerIn 0.8s ease both;
     }
 
     .eyebrow {
@@ -167,28 +245,49 @@
       margin: 0;
     }
 
+    @keyframes headerIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Price buttons */
     .ranges {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin-bottom: 30px;
+      animation: fadeUp 0.8s ease 0.15s both;
     }
 
     .range-button {
       border: 1px solid #34423a;
-      background: #18221c;
+      background: rgba(24, 34, 28, 0.92);
       color: white;
       padding: 17px 10px;
       border-radius: 16px;
       cursor: pointer;
       font-size: 15px;
       font-weight: bold;
-      transition: .2s;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
     }
 
     .range-button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.01);
       border-color: #b8c7bc;
+    }
+
+    .range-button:active {
+      transform: scale(.97);
     }
 
     .range-button.active {
@@ -197,6 +296,19 @@
       border-color: #d7e4da;
     }
 
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section title */
     .section-title {
       display: flex;
       justify-content: space-between;
@@ -215,6 +327,7 @@
       font-size: 14px;
     }
 
+    /* Product cards */
     .items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -222,17 +335,34 @@
     }
 
     .item {
-      background: rgba(24, 34, 28, .96);
+      background: rgba(24, 34, 28, 0.97);
       border: 1px solid #34423a;
       border-radius: 20px;
       padding: 15px;
       overflow: hidden;
-      transition: .2s;
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+      animation: cardIn 0.5s ease both;
     }
 
     .item:hover {
-      transform: translateY(-3px);
-      border-color: #68796e;
+      transform: translateY(-6px);
+      border-color: #75857a;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .product-image {
@@ -243,6 +373,11 @@
       background: white;
       border-radius: 15px;
       margin-bottom: 15px;
+      transition: transform .3s ease;
+    }
+
+    .item:hover .product-image {
+      transform: scale(1.035);
     }
 
     .item-info {
@@ -265,6 +400,17 @@
       margin-top: 5px;
     }
 
+    .size-badge {
+      display: inline-block;
+      margin-top: 9px;
+      padding: 6px 9px;
+      border-radius: 9px;
+      background: #253229;
+      color: #d7e4da;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
     .view-button {
       display: inline-block;
       margin-top: 13px;
@@ -279,30 +425,73 @@
     }
 
     .view-button:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       opacity: .88;
     }
 
+    /* Empty price range */
     .empty {
       grid-column: 1 / -1;
       text-align: center;
-      padding: 45px 20px;
-      background: rgba(24, 34, 28, .96);
+      padding: 48px 20px;
+      background: rgba(24, 34, 28, 0.96);
       border: 1px solid #34423a;
       border-radius: 20px;
-      color: #929e96;
+      animation: cardIn .5s ease both;
     }
 
     .empty-icon {
-      font-size: 42px;
-      margin-bottom: 8px;
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+
+    .empty strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 5px;
+    }
+
+    .empty div:last-child {
+      color: #929e96;
+      font-size: 14px;
     }
 
     .footer {
       text-align: center;
       color: #68756d;
-      margin-top: 40px;
+      margin-top: 42px;
       font-size: 13px;
+    }
+
+    /* Floating decorations */
+    .decor {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 34px;
+      opacity: .55;
+      animation: floatDecor 4s ease-in-out infinite;
+    }
+
+    .decor.tree {
+      left: 3%;
+      bottom: 8%;
+    }
+
+    .decor.gift {
+      right: 4%;
+      bottom: 12%;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatDecor {
+      0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+
+      50% {
+        transform: translateY(-13px) rotate(3deg);
+      }
     }
 
     @media (max-width: 700px) {
@@ -313,6 +502,14 @@
       .items {
         grid-template-columns: 1fr;
       }
+
+      .product-image {
+        height: 260px;
+      }
+
+      .decor {
+        display: none;
+      }
     }
 
     @media (max-width: 430px) {
@@ -320,23 +517,35 @@
         width: 94%;
       }
 
-      .top-bar {
-        align-items: flex-start;
-      }
-
       .ranges {
         grid-template-columns: 1fr;
       }
 
       .product-image {
-        height: 230px;
+        height: 225px;
+      }
+
+      .top-bar {
+        align-items: flex-start;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .flake,
-      .light {
-        animation: none;
+      .light,
+      .item,
+      .decor,
+      .header,
+      .top-bar,
+      .lights,
+      .ranges {
+        animation: none !important;
+      }
+
+      .item:hover,
+      .range-button:hover,
+      .view-button:hover {
+        transform: none;
       }
     }
   </style>
@@ -357,6 +566,9 @@
     <div class="flake">•</div>
     <div class="flake">❄</div>
   </div>
+
+  <div class="decor tree" aria-hidden="true">🎄</div>
+  <div class="decor gift" aria-hidden="true">🎁</div>
 
   <div class="container">
 
@@ -446,6 +658,7 @@ const gifts = [
     name: "Men's PSD",
     price: "Under $50",
     category: "Clothing",
+    size: "Men's Medium",
     image: "PSD.avif",
     link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322#lnk=sametab"
   },
@@ -454,6 +667,7 @@ const gifts = [
     name: "Jorts",
     price: "Under $50",
     category: "Clothing",
+    size: "Medium",
     image: "Jorts.webp",
     link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510"
   },
@@ -462,6 +676,7 @@ const gifts = [
     name: "Quarter Zip",
     price: "Under $50",
     category: "Clothing",
+    size: "Size S",
     image: "Quarter Zip.jpg",
     link: "https://www.amazon.com/JMIERR-Quarter-Pullover-Sweatshirt-Sweater/dp/B0H74RFN74/"
   },
@@ -470,6 +685,7 @@ const gifts = [
     name: "adidas Handball Spezial",
     price: "$100+",
     category: "Shoes",
+    size: "Men's 10",
     image: "samba spezial.webp",
     link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html"
   },
@@ -478,6 +694,7 @@ const gifts = [
     name: "Nike Dunks",
     price: "$100+",
     category: "Shoes",
+    size: "Men's 10",
     image: "Nike Dunks.avif",
     link: "https://www.nike.com/t/dunk-low-retro-mens-shoes-5FQWGR/II7078-200"
   },
@@ -486,6 +703,7 @@ const gifts = [
     name: "ASICS GEL-KAYANO 14",
     price: "$100+",
     category: "Shoes / Running",
+    size: "Men's 10",
     image: "gel kayano 14.webp",
     link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html"
   },
@@ -494,6 +712,7 @@ const gifts = [
     name: "Birkenstock Bostons",
     price: "$100+",
     category: "Shoes",
+    size: "Men's 10",
     image: "Birkenstock Bostons.webp",
     link: "https://www.dickssportinggoods.com/p/birkenstock-mens-boston-soft-footbed-casual-shoes-20birmbstnsftftbdfot/20birmbstnsftftbdfot?color=Black"
   }
@@ -574,11 +793,12 @@ function showItems(range, button) {
   }
 
 
-  filteredItems.forEach(item => {
+  filteredItems.forEach((item, index) => {
 
     const card = document.createElement("div");
 
     card.className = "item";
+    card.style.animationDelay = `${index * 0.08}s`;
 
     card.innerHTML = `
 
@@ -599,6 +819,12 @@ function showItems(range, button) {
         <div class="category">
           ${item.category}
         </div>
+
+        <div class="size-badge">
+          📏 ${item.size}
+        </div>
+
+        <br>
 
         <a
           href="${item.link}"
