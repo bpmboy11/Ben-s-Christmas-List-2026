@@ -13,112 +13,126 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, #24382c 0%, #111812 48%, #0b100d 100%);
+      background: #08100b;
       color: white;
       overflow-x: hidden;
     }
 
-    .page {
+    /* =========================
+       MAIN HOME PAGE
+    ========================= */
+
+    .home {
       min-height: 100vh;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 30px 20px;
-      position: relative;
-      overflow: hidden;
+      background:
+        radial-gradient(circle at top, #2c4435 0%, #111812 48%, #080d0a 100%);
     }
 
-    .content {
+    .home-content {
       width: min(760px, 100%);
       text-align: center;
       position: relative;
-      z-index: 5;
+      z-index: 3;
+      opacity: 0;
+      transform: translateY(18px) scale(.98);
     }
+
+    .home.show .home-content {
+      animation: revealHome 1.2s ease forwards;
+    }
+
+    @keyframes revealHome {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .eyebrow {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c1ccc4;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(50px, 10vw, 95px);
+      line-height: .9;
+      margin: 12px 0;
+      letter-spacing: -4px;
+    }
+
+    .subtitle {
+      color: #acb7b0;
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0 auto;
+      max-width: 540px;
+    }
+
+    .open-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 24px;
+      border-radius: 15px;
+      background: #d7e4da;
+      color: #101713;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .open-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      opacity: .9;
+    }
+
+    /* Christmas lights */
 
     .lights {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin-bottom: 35px;
       flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
     .light {
       width: 13px;
       height: 13px;
       border-radius: 50%;
-      background: #d7e4da;
-      box-shadow: 0 0 12px rgba(215, 228, 218, 0.65);
-      animation: glow 1.8s infinite alternate;
+      background: #eaf2eb;
+      box-shadow: 0 0 13px rgba(234, 242, 235, .7);
+      animation: blink 1.5s alternate infinite;
     }
 
-    .light:nth-child(2) { animation-delay: .2s; }
-    .light:nth-child(3) { animation-delay: .4s; }
-    .light:nth-child(4) { animation-delay: .6s; }
-    .light:nth-child(5) { animation-delay: .8s; }
-    .light:nth-child(6) { animation-delay: 1s; }
-    .light:nth-child(7) { animation-delay: 1.2s; }
-    .light:nth-child(8) { animation-delay: 1.4s; }
+    .light:nth-child(2) { animation-delay: .15s; }
+    .light:nth-child(3) { animation-delay: .30s; }
+    .light:nth-child(4) { animation-delay: .45s; }
+    .light:nth-child(5) { animation-delay: .60s; }
+    .light:nth-child(6) { animation-delay: .75s; }
+    .light:nth-child(7) { animation-delay: .90s; }
+    .light:nth-child(8) { animation-delay: 1.05s; }
 
-    @keyframes glow {
+    @keyframes blink {
       from {
-        opacity: .45;
-        transform: scale(.9);
+        opacity: .4;
+        transform: scale(.88);
       }
+
       to {
         opacity: 1;
         transform: scale(1.15);
       }
-    }
-
-    .eyebrow {
-      font-size: 15px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #bdc9c1;
-      font-weight: bold;
-    }
-
-    h1 {
-      margin: 12px 0 8px;
-      font-size: clamp(52px, 11vw, 100px);
-      line-height: .92;
-      letter-spacing: -4px;
-    }
-
-    .year {
-      font-size: clamp(28px, 6vw, 48px);
-      font-weight: 800;
-      margin-bottom: 22px;
-    }
-
-    .subtitle {
-      max-width: 560px;
-      margin: 0 auto;
-      color: #aab5ae;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .open-button {
-      display: inline-block;
-      margin-top: 32px;
-      padding: 16px 25px;
-      border-radius: 15px;
-      background: #d7e4da;
-      color: #101713;
-      font-size: 17px;
-      font-weight: 800;
-      text-decoration: none;
-      transition: transform .2s ease, opacity .2s ease;
-    }
-
-    .open-button:hover {
-      transform: translateY(-3px);
-      opacity: .9;
     }
 
     .decorations {
@@ -129,98 +143,330 @@
       font-size: 48px;
     }
 
-    .tree {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .gift-left {
-      animation: float 3.4s ease-in-out infinite;
-      animation-delay: .4s;
-    }
-
-    .gift-right {
+    .decoration {
       animation: float 3.2s ease-in-out infinite;
-      animation-delay: .8s;
+    }
+
+    .decoration:nth-child(2) {
+      animation-delay: .5s;
+    }
+
+    .decoration:nth-child(3) {
+      animation-delay: 1s;
     }
 
     @keyframes float {
       0%, 100% {
         transform: translateY(0);
       }
+
       50% {
-        transform: translateY(-8px);
+        transform: translateY(-9px);
       }
     }
 
-    .snow {
+    /* =========================
+       INTRO SCREEN
+    ========================= */
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background:
+        radial-gradient(circle at 75% 18%, rgba(255,255,255,.12), transparent 90px),
+        linear-gradient(#14271c, #07100a);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .intro.hide {
+      animation: introOut 1.2s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes introOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Moon */
+
+    .moon {
+      position: absolute;
+      top: 12%;
+      right: 12%;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #eef4ef;
+      box-shadow: 0 0 35px rgba(238,244,239,.3);
+    }
+
+    /* Stars */
+
+    .stars {
       position: absolute;
       inset: 0;
-      pointer-events: none;
-      overflow: hidden;
     }
 
-    .flake {
+    .star {
       position: absolute;
-      top: -20px;
       color: white;
-      opacity: .75;
-      animation: fall linear infinite;
+      opacity: .7;
+      animation: twinkle 1.8s alternate infinite;
     }
 
-    .flake:nth-child(1) { left: 5%;  animation-duration: 9s;  animation-delay: 0s;  font-size: 16px; }
-    .flake:nth-child(2) { left: 14%; animation-duration: 12s; animation-delay: 2s;  font-size: 11px; }
-    .flake:nth-child(3) { left: 24%; animation-duration: 10s; animation-delay: 4s;  font-size: 18px; }
-    .flake:nth-child(4) { left: 35%; animation-duration: 13s; animation-delay: 1s;  font-size: 13px; }
-    .flake:nth-child(5) { left: 47%; animation-duration: 11s; animation-delay: 3s;  font-size: 17px; }
-    .flake:nth-child(6) { left: 59%; animation-duration: 14s; animation-delay: 5s;  font-size: 12px; }
-    .flake:nth-child(7) { left: 71%; animation-duration: 9s;  animation-delay: 2s;  font-size: 15px; }
-    .flake:nth-child(8) { left: 82%; animation-duration: 12s; animation-delay: 4s;  font-size: 18px; }
-    .flake:nth-child(9) { left: 92%; animation-duration: 10s; animation-delay: 1s;  font-size: 12px; }
+    .star:nth-child(1) { left: 10%; top: 18%; }
+    .star:nth-child(2) { left: 22%; top: 10%; animation-delay: .4s; }
+    .star:nth-child(3) { left: 38%; top: 21%; animation-delay: .8s; }
+    .star:nth-child(4) { left: 55%; top: 12%; animation-delay: .2s; }
+    .star:nth-child(5) { left: 68%; top: 27%; animation-delay: .6s; }
+    .star:nth-child(6) { left: 84%; top: 15%; animation-delay: 1s; }
 
-    @keyframes fall {
+    @keyframes twinkle {
       from {
-        transform: translateY(-30px) rotate(0deg);
+        opacity: .25;
+        transform: scale(.8);
       }
+
       to {
-        transform: translateY(110vh) rotate(360deg);
+        opacity: 1;
+        transform: scale(1.2);
       }
     }
 
-    .bottom-note {
-      margin-top: 25px;
-      color: #68756d;
-      font-size: 13px;
+    /* Mountains */
+
+    .mountains {
+      position: absolute;
+      bottom: 0;
+      left: -5%;
+      width: 110%;
+      height: 38%;
+      background:
+        linear-gradient(
+          135deg,
+          transparent 0 15%,
+          #173021 15% 34%,
+          transparent 34% 50%,
+          #1a3423 50% 74%,
+          transparent 74%
+        );
+      opacity: .95;
+    }
+
+    /* Snow ground */
+
+    .snow-ground {
+      position: absolute;
+      bottom: -20px;
+      left: -5%;
+      width: 110%;
+      height: 20%;
+      background: #eef4ef;
+      border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+    }
+
+    /* Santa */
+
+    .santa {
+      position: absolute;
+      left: -30%;
+      top: 37%;
+      z-index: 10;
+      white-space: nowrap;
+      font-size: clamp(54px, 9vw, 92px);
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+
+      animation:
+        santaRide 4.5s cubic-bezier(.18,.74,.25,1) forwards;
+    }
+
+    @keyframes santaRide {
+
+      0% {
+        left: -35%;
+        top: 42%;
+        transform: rotate(-2deg) scale(.85);
+      }
+
+      40% {
+        top: 34%;
+        transform: rotate(1deg) scale(1);
+      }
+
+      75% {
+        left: 72%;
+        top: 28%;
+        transform: rotate(2deg) scale(1.05);
+      }
+
+      100% {
+        left: 125%;
+        top: 25%;
+        transform: rotate(3deg) scale(1.08);
+      }
+    }
+
+    /* Blowing snow */
+
+    .snow-wave {
+      position: absolute;
+      inset: -20%;
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+
+      background:
+        radial-gradient(circle at 5% 20%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 12% 40%, white 0 3px, transparent 4px),
+        radial-gradient(circle at 25% 70%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 38% 25%, white 0 3px, transparent 4px),
+        radial-gradient(circle at 48% 60%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 62% 30%, white 0 3px, transparent 4px),
+        radial-gradient(circle at 76% 75%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 40%, white 0 3px, transparent 4px);
+
+      background-size:
+        160px 120px,
+        210px 150px,
+        190px 130px,
+        240px 170px,
+        180px 140px,
+        220px 160px,
+        170px 120px,
+        200px 150px;
+
+      animation: snowBlast 5.2s ease-out .7s forwards;
+    }
+
+    @keyframes snowBlast {
+
+      0% {
+        opacity: 0;
+        transform: translateX(-25%);
+      }
+
+      25% {
+        opacity: .3;
+      }
+
+      55% {
+        opacity: .95;
+        transform: translateX(5%);
+      }
+
+      80% {
+        opacity: .55;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(25%);
+      }
+    }
+
+    /* Intro text */
+
+    .intro-title {
+      position: absolute;
+      z-index: 15;
+      bottom: 17%;
+      text-align: center;
+      opacity: 0;
+
+      animation: introTitle 1.6s ease 2.3s forwards;
+    }
+
+    .intro-title small {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    .intro-title strong {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(28px, 7vw, 52px);
+    }
+
+    @keyframes introTitle {
+      to {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Skip button */
+
+    .skip-button {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 50;
+
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(0,0,0,.25);
+      color: white;
+      padding: 9px 12px;
+      border-radius: 11px;
+
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .skip-button:hover {
+      background: rgba(0,0,0,.4);
+    }
+
+    /* Mobile */
+
+    @media (max-width: 600px) {
+
+      .decorations {
+        font-size: 40px;
+      }
+
+      .santa {
+        font-size: 58px;
+      }
+
     }
 
     @media (prefers-reduced-motion: reduce) {
+
+      .intro {
+        display: none;
+      }
+
+      .home-content {
+        opacity: 1;
+        transform: none;
+      }
+
       .light,
-      .tree,
-      .gift-left,
-      .gift-right,
-      .flake {
+      .decoration {
         animation: none;
       }
+
     }
   </style>
 </head>
 
 <body>
 
-  <div class="page">
+  <!-- HOME PAGE -->
 
-    <div class="snow" aria-hidden="true">
-      <div class="flake">❄</div>
-      <div class="flake">•</div>
-      <div class="flake">❄</div>
-      <div class="flake">•</div>
-      <div class="flake">❄</div>
-      <div class="flake">•</div>
-      <div class="flake">❄</div>
-      <div class="flake">•</div>
-      <div class="flake">❄</div>
-    </div>
+  <main class="home" id="home">
 
-    <main class="content">
+    <div class="home-content">
 
       <div class="lights" aria-hidden="true">
         <div class="light"></div>
@@ -234,37 +480,98 @@
       </div>
 
       <div class="eyebrow">
-        🎄 Christmas
+        🎄 Christmas 2026
       </div>
 
-      <h1>BEN'S</h1>
-
-      <div class="year">
+      <h1>
+        BEN'S<br>
         CHRISTMAS LIST
-      </div>
+      </h1>
 
       <p class="subtitle">
         My Christmas wishlist for 2026.
         Tap below to see everything I'm hoping for.
       </p>
 
-      <a class="open-button" href="./wishlist.html">
+      <a
+        class="open-button"
+        href="./wishlist.html"
+      >
         🎁 OPEN MY CHRISTMAS LIST →
       </a>
 
       <div class="decorations" aria-hidden="true">
-        <div class="gift-left">🎁</div>
-        <div class="tree">🎄</div>
-        <div class="gift-right">🎁</div>
+        <div class="decoration">🎁</div>
+        <div class="decoration">🎄</div>
+        <div class="decoration">🎁</div>
       </div>
 
-      <div class="bottom-note">
-        Made for Christmas 2026
-      </div>
+    </div>
 
-    </main>
+  </main>
+
+
+  <!-- CHRISTMAS INTRO -->
+
+  <div class="intro" id="intro">
+
+    <button
+      class="skip-button"
+      id="skipButton"
+      type="button"
+    >
+      Skip Intro
+    </button>
+
+    <div class="moon"></div>
+
+    <div class="stars" aria-hidden="true">
+      <div class="star">✦</div>
+      <div class="star">✦</div>
+      <div class="star">✦</div>
+      <div class="star">✦</div>
+      <div class="star">✦</div>
+      <div class="star">✦</div>
+    </div>
+
+    <div class="mountains"></div>
+
+    <div class="snow-ground"></div>
+
+    <div class="santa">
+      🎅🛷💨
+    </div>
+
+    <div class="snow-wave"></div>
+
+    <div class="intro-title">
+      <small>A very important delivery</small>
+      <strong>Ben's Christmas List</strong>
+    </div>
 
   </div>
+
+
+  <script>
+
+    const intro = document.getElementById("intro");
+    const home = document.getElementById("home");
+    const skipButton = document.getElementById("skipButton");
+
+    function revealHome() {
+      intro.classList.add("hide");
+      home.classList.add("show");
+    }
+
+    /* Automatically reveal the home page after the intro */
+
+    setTimeout(revealHome, 5700);
+
+    /* Skip Intro button */
+
+    skipButton.addEventListener("click", revealHome);
+
+  </script>
 
 </body>
 </html>
