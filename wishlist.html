@@ -14,58 +14,176 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #101713;
+      background:
+        radial-gradient(circle at top, #24382c 0%, #111812 48%, #0b100d 100%);
       color: white;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      padding: 30px 0 60px;
+      overflow: hidden;
+    }
+
+    .snow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .flake {
+      position: absolute;
+      top: -30px;
+      color: white;
+      opacity: .65;
+      animation: fall linear infinite;
+    }
+
+    .flake:nth-child(1) { left: 4%; animation-duration: 9s; animation-delay: 0s; }
+    .flake:nth-child(2) { left: 13%; animation-duration: 12s; animation-delay: 2s; }
+    .flake:nth-child(3) { left: 24%; animation-duration: 10s; animation-delay: 4s; }
+    .flake:nth-child(4) { left: 36%; animation-duration: 13s; animation-delay: 1s; }
+    .flake:nth-child(5) { left: 48%; animation-duration: 11s; animation-delay: 3s; }
+    .flake:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 5s; }
+    .flake:nth-child(7) { left: 72%; animation-duration: 9s; animation-delay: 2s; }
+    .flake:nth-child(8) { left: 84%; animation-duration: 12s; animation-delay: 4s; }
+    .flake:nth-child(9) { left: 94%; animation-duration: 10s; animation-delay: 1s; }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-30px) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
     }
 
     .container {
-      width: min(950px, 92%);
+      position: relative;
+      z-index: 2;
+      width: min(1000px, 92%);
       margin: auto;
-      padding: 45px 0 60px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .home-button {
+      display: inline-block;
+      padding: 11px 16px;
+      border-radius: 12px;
+      background: #18221c;
+      border: 1px solid #34423a;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .home-button:hover {
+      transform: translateY(-2px);
+      border-color: #aebdb2;
+    }
+
+    .year {
+      color: #9eaaa2;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .lights {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #d7e4da;
+      box-shadow: 0 0 12px rgba(215, 228, 218, .65);
+      animation: glow 1.8s infinite alternate;
+    }
+
+    .light:nth-child(2) { animation-delay: .2s; }
+    .light:nth-child(3) { animation-delay: .4s; }
+    .light:nth-child(4) { animation-delay: .6s; }
+    .light:nth-child(5) { animation-delay: .8s; }
+    .light:nth-child(6) { animation-delay: 1s; }
+    .light:nth-child(7) { animation-delay: 1.2s; }
+    .light:nth-child(8) { animation-delay: 1.4s; }
+
+    @keyframes glow {
+      from {
+        opacity: .45;
+        transform: scale(.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1.15);
+      }
     }
 
     .header {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
-    .christmas {
+    .eyebrow {
       font-size: 14px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #b8c7bc;
+      color: #bdc9c1;
       font-weight: bold;
     }
 
     h1 {
-      font-size: clamp(40px, 8vw, 72px);
-      margin: 10px 0;
+      font-size: clamp(42px, 8vw, 72px);
+      margin: 9px 0;
       line-height: 1;
     }
 
     .subtitle {
-      color: #aeb9b1;
+      color: #aab5ae;
       font-size: 17px;
+      margin: 0;
     }
 
     .ranges {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .range-button {
       border: 1px solid #34423a;
       background: #18221c;
       color: white;
-      padding: 18px 10px;
+      padding: 17px 10px;
       border-radius: 16px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .range-button:hover {
@@ -82,7 +200,8 @@
     .section-title {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: end;
+      gap: 10px;
       margin-bottom: 15px;
     }
 
@@ -92,7 +211,7 @@
     }
 
     .count {
-      color: #9eaaa2;
+      color: #929e96;
       font-size: 14px;
     }
 
@@ -103,15 +222,12 @@
     }
 
     .item {
-      background: #18221c;
+      background: rgba(24, 34, 28, .96);
       border: 1px solid #34423a;
       border-radius: 20px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: 0.2s;
+      padding: 15px;
       overflow: hidden;
+      transition: .2s;
     }
 
     .item:hover {
@@ -121,26 +237,26 @@
 
     .product-image {
       width: 100%;
-      height: 240px;
+      height: 250px;
       object-fit: contain;
+      display: block;
       background: white;
       border-radius: 15px;
-      display: block;
+      margin-bottom: 15px;
     }
 
     .item-info {
-      padding: 2px 3px 3px;
+      padding: 0 3px 3px;
     }
 
     .item h3 {
       margin: 0 0 6px;
-      font-size: 21px;
+      font-size: 20px;
     }
 
     .price {
-      color: #d7e4da;
       font-weight: bold;
-      font-size: 16px;
+      color: #d7e4da;
     }
 
     .category {
@@ -159,17 +275,32 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 14px;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .view-button:hover {
       transform: translateY(-1px);
-      opacity: 0.88;
+      opacity: .88;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 45px 20px;
+      background: rgba(24, 34, 28, .96);
+      border: 1px solid #34423a;
+      border-radius: 20px;
+      color: #929e96;
+    }
+
+    .empty-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
     }
 
     .footer {
       text-align: center;
-      color: #77837b;
+      color: #68756d;
       margin-top: 40px;
       font-size: 13px;
     }
@@ -182,19 +313,30 @@
       .items {
         grid-template-columns: 1fr;
       }
-
-      .product-image {
-        height: 260px;
-      }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 430px) {
+      .container {
+        width: 94%;
+      }
+
+      .top-bar {
+        align-items: flex-start;
+      }
+
       .ranges {
         grid-template-columns: 1fr;
       }
 
       .product-image {
-        height: 220px;
+        height: 230px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flake,
+      .light {
+        animation: none;
       }
     }
   </style>
@@ -202,18 +344,52 @@
 
 <body>
 
+<div class="page">
+
+  <div class="snow" aria-hidden="true">
+    <div class="flake">❄</div>
+    <div class="flake">•</div>
+    <div class="flake">❄</div>
+    <div class="flake">•</div>
+    <div class="flake">❄</div>
+    <div class="flake">•</div>
+    <div class="flake">❄</div>
+    <div class="flake">•</div>
+    <div class="flake">❄</div>
+  </div>
+
   <div class="container">
 
-    <div class="header">
-      <div class="christmas">🎄 Christmas 2026</div>
+    <div class="top-bar">
+      <a class="home-button" href="./index.html">
+        ← Home
+      </a>
 
-      <h1>Ben's Christmas List</h1>
-
-      <div class="subtitle">
-        Tap a price range to see what I'm looking for.
+      <div class="year">
+        Christmas 2026
       </div>
     </div>
 
+    <div class="lights" aria-hidden="true">
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+      <div class="light"></div>
+    </div>
+
+    <div class="header">
+      <div class="eyebrow">🎁 My Wishlist</div>
+
+      <h1>Ben's Christmas List</h1>
+
+      <p class="subtitle">
+        Tap a price range to explore the list.
+      </p>
+    </div>
 
     <div class="ranges">
 
@@ -247,200 +423,209 @@
 
     </div>
 
-
     <div class="section-title">
       <h2 id="title">Under $50</h2>
       <div class="count" id="count"></div>
     </div>
 
-
     <div class="items" id="items"></div>
 
-
     <div class="footer">
-      🎁 Thanks for checking out my Christmas list!
+      🎄 Made for Christmas 2026 🎄
     </div>
 
   </div>
 
+</div>
 
-  <script>
+<script>
 
-    const gifts = [
+const gifts = [
 
-      {
-        name: "Men's PSD",
-        price: "Under $50",
-        category: "Clothing",
-        image: "PSD.avif",
-        link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322#lnk=sametab"
-      },
+  {
+    name: "Men's PSD",
+    price: "Under $50",
+    category: "Clothing",
+    image: "PSD.avif",
+    link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322#lnk=sametab"
+  },
 
-      {
-        name: "Jorts",
-        price: "Under $50",
-        category: "Clothing",
-        image: "Jorts.webp",
-        link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510"
-      },
+  {
+    name: "Jorts",
+    price: "Under $50",
+    category: "Clothing",
+    image: "Jorts.webp",
+    link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510"
+  },
 
-      {
-        name: "Quarter Zip",
-        price: "Under $50",
-        category: "Clothing",
-        image: "Quarter Zip.jpg",
-        link: "https://www.amazon.com/JMIERR-Quarter-Pullover-Sweatshirt-Sweater/dp/B0H74RFN74/"
-      },
+  {
+    name: "Quarter Zip",
+    price: "Under $50",
+    category: "Clothing",
+    image: "Quarter Zip.jpg",
+    link: "https://www.amazon.com/JMIERR-Quarter-Pullover-Sweatshirt-Sweater/dp/B0H74RFN74/"
+  },
 
-      {
-        name: "adidas Handball Spezial",
-        price: "$100+",
-        category: "Shoes",
-        image: "samba spezial.webp",
-        link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html"
-      },
+  {
+    name: "adidas Handball Spezial",
+    price: "$100+",
+    category: "Shoes",
+    image: "samba spezial.webp",
+    link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html"
+  },
 
-      {
-        name: "Nike Dunks",
-        price: "$100+",
-        category: "Shoes",
-        image: "Nike Dunks.avif",
-        link: "https://www.nike.com/t/dunk-low-retro-mens-shoes-5FQWGR/II7078-200"
-      },
+  {
+    name: "Nike Dunks",
+    price: "$100+",
+    category: "Shoes",
+    image: "Nike Dunks.avif",
+    link: "https://www.nike.com/t/dunk-low-retro-mens-shoes-5FQWGR/II7078-200"
+  },
 
-      {
-        name: "ASICS GEL-KAYANO 14",
-        price: "$100+",
-        category: "Shoes / Running",
-        image: "gel kayano 14.webp",
-        link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html"
-      },
+  {
+    name: "ASICS GEL-KAYANO 14",
+    price: "$100+",
+    category: "Shoes / Running",
+    image: "gel kayano 14.webp",
+    link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html"
+  },
 
-      {
-        name: "Birkenstock Bostons",
-        price: "$100+",
-        category: "Shoes",
-        image: "Birkenstock Bostons.webp",
-        link: "https://www.dickssportinggoods.com/p/birkenstock-mens-boston-soft-footbed-casual-shoes-20birmbstnsftftbdfot/20birmbstnsftftbdfot?color=Black"
+  {
+    name: "Birkenstock Bostons",
+    price: "$100+",
+    category: "Shoes",
+    image: "Birkenstock Bostons.webp",
+    link: "https://www.dickssportinggoods.com/p/birkenstock-mens-boston-soft-footbed-casual-shoes-20birmbstnsftftbdfot/20birmbstnsftftbdfot?color=Black"
+  }
+
+];
+
+
+function showItems(range, button) {
+
+  const itemsContainer = document.getElementById("items");
+  const title = document.getElementById("title");
+  const count = document.getElementById("count");
+
+  document.querySelectorAll(".range-button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  let filteredItems;
+
+  if (range === "all") {
+
+    filteredItems = gifts;
+    title.textContent = "Everything";
+
+  } else {
+
+    filteredItems = gifts.filter(item => {
+
+      if (range === "under50") {
+        return item.price === "Under $50";
       }
 
-    ];
-
-
-    function showItems(range, button) {
-
-      const itemsContainer = document.getElementById("items");
-      const title = document.getElementById("title");
-      const count = document.getElementById("count");
-
-      document.querySelectorAll(".range-button").forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      button.classList.add("active");
-
-      let filteredItems;
-
-
-      if (range === "all") {
-
-        filteredItems = gifts;
-        title.textContent = "Everything";
-
+      if (range === "50to100") {
+        return item.price === "$50–$100";
       }
 
-      else {
-
-        filteredItems = gifts.filter(item => {
-
-          if (range === "under50") {
-            return item.price === "Under $50";
-          }
-
-          if (range === "50to100") {
-            return item.price === "$50–$100";
-          }
-
-          if (range === "100plus") {
-            return item.price === "$100+";
-          }
-
-        });
-
-
-        if (range === "under50") {
-          title.textContent = "Under $50";
-        }
-
-        if (range === "50to100") {
-          title.textContent = "$50–$100";
-        }
-
-        if (range === "100plus") {
-          title.textContent = "$100+";
-        }
-
+      if (range === "100plus") {
+        return item.price === "$100+";
       }
 
+      return false;
 
-      count.textContent = filteredItems.length + " items";
+    });
 
-      itemsContainer.innerHTML = "";
-
-
-      filteredItems.forEach(item => {
-
-        const card = document.createElement("div");
-
-        card.className = "item";
-
-
-        card.innerHTML = `
-
-          <img
-            src="${encodeURI(item.image)}"
-            alt="${item.name}"
-            class="product-image"
-          >
-
-          <div class="item-info">
-
-            <h3>${item.name}</h3>
-
-            <div class="price">
-              ${item.price}
-            </div>
-
-            <div class="category">
-              ${item.category}
-            </div>
-
-            <a
-              href="${item.link}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="view-button"
-            >
-              View Item →
-            </a>
-
-          </div>
-
-        `;
-
-        itemsContainer.appendChild(card);
-
-      });
-
+    if (range === "under50") {
+      title.textContent = "Under $50";
     }
 
+    if (range === "50to100") {
+      title.textContent = "$50–$100";
+    }
 
-    showItems(
-      "under50",
-      document.querySelector(".range-button")
-    );
+    if (range === "100plus") {
+      title.textContent = "$100+";
+    }
 
-  </script>
+  }
+
+
+  count.textContent = filteredItems.length + " items";
+
+  itemsContainer.innerHTML = "";
+
+
+  if (filteredItems.length === 0) {
+
+    itemsContainer.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🎁</div>
+        <strong>Nothing here yet</strong>
+        <div>Maybe a future addition to the list...</div>
+      </div>
+    `;
+
+    return;
+  }
+
+
+  filteredItems.forEach(item => {
+
+    const card = document.createElement("div");
+
+    card.className = "item";
+
+    card.innerHTML = `
+
+      <img
+        src="${encodeURI(item.image)}"
+        alt="${item.name}"
+        class="product-image"
+      >
+
+      <div class="item-info">
+
+        <h3>${item.name}</h3>
+
+        <div class="price">
+          ${item.price}
+        </div>
+
+        <div class="category">
+          ${item.category}
+        </div>
+
+        <a
+          href="${item.link}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="view-button"
+        >
+          View Item →
+        </a>
+
+      </div>
+
+    `;
+
+    itemsContainer.appendChild(card);
+
+  });
+
+}
+
+
+showItems(
+  "under50",
+  document.querySelector(".range-button")
+);
+
+</script>
 
 </body>
 </html>
