@@ -11,434 +11,603 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #08100b;
-      color: white;
-      overflow-x: hidden;
+      min-height: 100%;
     }
 
-    /* =========================
-       MAIN HOME PAGE
-    ========================= */
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #07101a;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* =====================================
+       HOME PAGE
+    ===================================== */
 
     .home {
-      min-height: 100vh;
       position: relative;
-      overflow: hidden;
+      min-height: 100vh;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 20px;
+
+      overflow: hidden;
+
       background:
-        radial-gradient(circle at top, #2c4435 0%, #111812 48%, #080d0a 100%);
+        radial-gradient(
+          circle at top,
+          #20392e 0%,
+          #101912 50%,
+          #07100b 100%
+        );
     }
 
     .home-content {
-      width: min(760px, 100%);
-      text-align: center;
       position: relative;
-      z-index: 3;
+      z-index: 5;
+
+      width: min(850px, 92%);
+
+      text-align: center;
+
+      padding: 40px 20px;
+
       opacity: 0;
-      transform: translateY(18px) scale(.98);
+      transform: translateY(25px);
     }
 
-    .home.show .home-content {
-      animation: revealHome 1.2s ease forwards;
+    .home.revealed .home-content {
+      animation: revealHome 1.4s ease forwards;
     }
 
     @keyframes revealHome {
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
     .eyebrow {
       font-size: 14px;
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #c1ccc4;
       font-weight: bold;
+
+      color: #f2f4f2;
+
+      text-shadow:
+        0 3px 15px rgba(0,0,0,.8);
     }
 
     h1 {
-      font-size: clamp(50px, 10vw, 95px);
+      font-size: clamp(52px, 10vw, 100px);
+
       line-height: .9;
-      margin: 12px 0;
+
+      margin: 14px 0;
+
       letter-spacing: -4px;
+
+      text-shadow:
+        0 4px 20px rgba(0,0,0,.8),
+        0 0 40px rgba(0,0,0,.25);
     }
 
     .subtitle {
-      color: #acb7b0;
+      font-family: Arial, Helvetica, sans-serif;
+
+      max-width: 560px;
+
+      margin: 20px auto 0;
+
       font-size: 18px;
-      line-height: 1.5;
-      margin: 0 auto;
-      max-width: 540px;
+
+      line-height: 1.55;
+
+      color: #f0f2ef;
+
+      text-shadow:
+        0 3px 15px rgba(0,0,0,.8);
     }
+
+    /* =====================================
+       REAL BUTTON
+    ===================================== */
 
     .open-button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 16px 24px;
-      border-radius: 15px;
-      background: #d7e4da;
-      color: #101713;
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: 800;
-      transition: .2s;
-    }
 
-    .open-button:hover {
-      transform: translateY(-3px) scale(1.02);
-      opacity: .9;
-    }
+      margin-top: 32px;
 
-    /* Christmas lights */
+      padding: 16px 27px;
 
-    .lights {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
+      border-radius: 14px;
 
-    .light {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #eaf2eb;
-      box-shadow: 0 0 13px rgba(234, 242, 235, .7);
-      animation: blink 1.5s alternate infinite;
-    }
-
-    .light:nth-child(2) { animation-delay: .15s; }
-    .light:nth-child(3) { animation-delay: .30s; }
-    .light:nth-child(4) { animation-delay: .45s; }
-    .light:nth-child(5) { animation-delay: .60s; }
-    .light:nth-child(6) { animation-delay: .75s; }
-    .light:nth-child(7) { animation-delay: .90s; }
-    .light:nth-child(8) { animation-delay: 1.05s; }
-
-    @keyframes blink {
-      from {
-        opacity: .4;
-        transform: scale(.88);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1.15);
-      }
-    }
-
-    .decorations {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 38px;
-      font-size: 48px;
-    }
-
-    .decoration {
-      animation: float 3.2s ease-in-out infinite;
-    }
-
-    .decoration:nth-child(2) {
-      animation-delay: .5s;
-    }
-
-    .decoration:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-9px);
-      }
-    }
-
-    /* =========================
-       INTRO SCREEN
-    ========================= */
-
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background:
-        radial-gradient(circle at 75% 18%, rgba(255,255,255,.12), transparent 90px),
-        linear-gradient(#14271c, #07100a);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .intro.hide {
-      animation: introOut 1.2s ease forwards;
-      pointer-events: none;
-    }
-
-    @keyframes introOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    /* Moon */
-
-    .moon {
-      position: absolute;
-      top: 12%;
-      right: 12%;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #eef4ef;
-      box-shadow: 0 0 35px rgba(238,244,239,.3);
-    }
-
-    /* Stars */
-
-    .stars {
-      position: absolute;
-      inset: 0;
-    }
-
-    .star {
-      position: absolute;
-      color: white;
-      opacity: .7;
-      animation: twinkle 1.8s alternate infinite;
-    }
-
-    .star:nth-child(1) { left: 10%; top: 18%; }
-    .star:nth-child(2) { left: 22%; top: 10%; animation-delay: .4s; }
-    .star:nth-child(3) { left: 38%; top: 21%; animation-delay: .8s; }
-    .star:nth-child(4) { left: 55%; top: 12%; animation-delay: .2s; }
-    .star:nth-child(5) { left: 68%; top: 27%; animation-delay: .6s; }
-    .star:nth-child(6) { left: 84%; top: 15%; animation-delay: 1s; }
-
-    @keyframes twinkle {
-      from {
-        opacity: .25;
-        transform: scale(.8);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-    }
-
-    /* Mountains */
-
-    .mountains {
-      position: absolute;
-      bottom: 0;
-      left: -5%;
-      width: 110%;
-      height: 38%;
       background:
         linear-gradient(
           135deg,
-          transparent 0 15%,
-          #173021 15% 34%,
-          transparent 34% 50%,
-          #1a3423 50% 74%,
-          transparent 74%
+          #871c1f,
+          #5f1114
         );
-      opacity: .95;
+
+      border: 1px solid rgba(255,255,255,.5);
+
+      color: white;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.4);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
     }
 
-    /* Snow ground */
+    .open-button:hover {
+      transform: translateY(-4px) scale(1.02);
 
-    .snow-ground {
+      box-shadow:
+        0 18px 40px rgba(0,0,0,.5);
+    }
+
+    /* =====================================
+       SNOW ON HOME PAGE
+    ===================================== */
+
+    .snow {
       position: absolute;
-      bottom: -20px;
-      left: -5%;
-      width: 110%;
-      height: 20%;
-      background: #eef4ef;
-      border-radius: 50% 50% 0 0 / 35% 35% 0 0;
-    }
 
-    /* Santa */
+      inset: 0;
 
-    .santa {
-      position: absolute;
-      left: -30%;
-      top: 37%;
-      z-index: 10;
-      white-space: nowrap;
-      font-size: clamp(54px, 9vw, 92px);
-      filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+      z-index: 4;
 
-      animation:
-        santaRide 4.5s cubic-bezier(.18,.74,.25,1) forwards;
-    }
-
-    @keyframes santaRide {
-
-      0% {
-        left: -35%;
-        top: 42%;
-        transform: rotate(-2deg) scale(.85);
-      }
-
-      40% {
-        top: 34%;
-        transform: rotate(1deg) scale(1);
-      }
-
-      75% {
-        left: 72%;
-        top: 28%;
-        transform: rotate(2deg) scale(1.05);
-      }
-
-      100% {
-        left: 125%;
-        top: 25%;
-        transform: rotate(3deg) scale(1.08);
-      }
-    }
-
-    /* Blowing snow */
-
-    .snow-wave {
-      position: absolute;
-      inset: -20%;
-      z-index: 20;
-      opacity: 0;
       pointer-events: none;
 
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+
+      top: -30px;
+
+      color: white;
+
+      opacity: .75;
+
+      text-shadow:
+        0 0 8px rgba(255,255,255,.7);
+
+      animation:
+        fall linear infinite,
+        drift ease-in-out infinite alternate;
+    }
+
+    .snowflake:nth-child(1) {
+      left: 4%;
+      font-size: 14px;
+      animation-duration: 8s, 3s;
+    }
+
+    .snowflake:nth-child(2) {
+      left: 13%;
+      font-size: 9px;
+      animation-duration: 11s, 4s;
+      animation-delay: 2s;
+    }
+
+    .snowflake:nth-child(3) {
+      left: 22%;
+      font-size: 17px;
+      animation-duration: 9s, 3s;
+      animation-delay: 1s;
+    }
+
+    .snowflake:nth-child(4) {
+      left: 34%;
+      font-size: 11px;
+      animation-duration: 12s, 4s;
+      animation-delay: 3s;
+    }
+
+    .snowflake:nth-child(5) {
+      left: 47%;
+      font-size: 15px;
+      animation-duration: 10s, 3s;
+    }
+
+    .snowflake:nth-child(6) {
+      left: 59%;
+      font-size: 10px;
+      animation-duration: 13s, 4s;
+      animation-delay: 2s;
+    }
+
+    .snowflake:nth-child(7) {
+      left: 71%;
+      font-size: 18px;
+      animation-duration: 8s, 3s;
+      animation-delay: 1s;
+    }
+
+    .snowflake:nth-child(8) {
+      left: 83%;
+      font-size: 12px;
+      animation-duration: 11s, 4s;
+    }
+
+    .snowflake:nth-child(9) {
+      left: 94%;
+      font-size: 16px;
+      animation-duration: 9s, 3s;
+      animation-delay: 2s;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-30px);
+      }
+
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    @keyframes drift {
+      from {
+        margin-left: -15px;
+      }
+
+      to {
+        margin-left: 18px;
+      }
+    }
+
+    /* =====================================
+       INTRO SCREEN
+    ===================================== */
+
+    .intro {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      overflow: hidden;
+
       background:
-        radial-gradient(circle at 5% 20%, white 0 2px, transparent 3px),
-        radial-gradient(circle at 12% 40%, white 0 3px, transparent 4px),
-        radial-gradient(circle at 25% 70%, white 0 2px, transparent 3px),
-        radial-gradient(circle at 38% 25%, white 0 3px, transparent 4px),
-        radial-gradient(circle at 48% 60%, white 0 2px, transparent 3px),
-        radial-gradient(circle at 62% 30%, white 0 3px, transparent 4px),
-        radial-gradient(circle at 76% 75%, white 0 2px, transparent 3px),
-        radial-gradient(circle at 88% 40%, white 0 3px, transparent 4px);
+        #07101a
+        url("christmas-scene.png")
+        center center / cover no-repeat;
+    }
+
+    .intro::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(3,8,13,.05),
+          rgba(3,8,13,.2),
+          rgba(3,8,13,.55)
+        );
+
+      z-index: 2;
+    }
+
+    /* Slow cinematic camera effect */
+
+    .intro-image {
+      position: absolute;
+
+      inset: -5%;
+
+      background:
+        url("christmas-scene.png")
+        center center / cover no-repeat;
+
+      animation:
+        cinematicMove 7s ease-in-out forwards;
+
+      z-index: 1;
+    }
+
+    @keyframes cinematicMove {
+
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.08);
+      }
+
+    }
+
+    /* =====================================
+       BLOWING SNOW TRANSITION
+    ===================================== */
+
+    .snow-blast {
+      position: absolute;
+
+      inset: -20%;
+
+      z-index: 8;
+
+      pointer-events: none;
+
+      opacity: 0;
+
+      background:
+
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(255,255,255,.95) 0 2px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 20% 60%,
+          rgba(255,255,255,.85) 0 3px,
+          transparent 5px
+        ),
+
+        radial-gradient(
+          circle at 35% 30%,
+          rgba(255,255,255,.95) 0 2px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 50% 75%,
+          rgba(255,255,255,.9) 0 3px,
+          transparent 5px
+        ),
+
+        radial-gradient(
+          circle at 70% 35%,
+          rgba(255,255,255,.95) 0 2px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 90% 55%,
+          rgba(255,255,255,.9) 0 3px,
+          transparent 5px
+        );
 
       background-size:
-        160px 120px,
-        210px 150px,
-        190px 130px,
-        240px 170px,
+        130px 110px,
         180px 140px,
+        160px 120px,
         220px 160px,
-        170px 120px,
-        200px 150px;
+        190px 130px,
+        210px 150px;
 
-      animation: snowBlast 5.2s ease-out .7s forwards;
+      animation:
+        snowBlast 5.8s ease-out .5s forwards;
     }
 
     @keyframes snowBlast {
 
       0% {
         opacity: 0;
-        transform: translateX(-25%);
+
+        transform:
+          translateX(-20%)
+          translateY(0)
+          scale(1);
       }
 
       25% {
-        opacity: .3;
+        opacity: .25;
       }
 
       55% {
         opacity: .95;
-        transform: translateX(5%);
+
+        transform:
+          translateX(4%)
+          translateY(1%)
+          scale(1.1);
       }
 
       80% {
-        opacity: .55;
+        opacity: .45;
       }
 
       100% {
         opacity: 0;
-        transform: translateX(25%);
+
+        transform:
+          translateX(25%)
+          translateY(2%)
+          scale(1.18);
       }
+
     }
 
-    /* Intro text */
+    /* =====================================
+       INTRO TITLE
+    ===================================== */
 
     .intro-title {
       position: absolute;
-      z-index: 15;
-      bottom: 17%;
+
+      z-index: 7;
+
+      left: 50%;
+
+      bottom: 14%;
+
+      transform: translateX(-50%);
+
       text-align: center;
+
+      color: white;
+
+      text-shadow:
+        0 3px 18px rgba(0,0,0,.9);
+
       opacity: 0;
 
-      animation: introTitle 1.6s ease 2.3s forwards;
+      animation:
+        titleAppear 1.4s ease 1.5s forwards;
     }
 
     .intro-title small {
+
       display: block;
-      font-size: 12px;
-      letter-spacing: 4px;
+
+      font-family: Arial, Helvetica, sans-serif;
+
       text-transform: uppercase;
-      opacity: .75;
+
+      letter-spacing: 4px;
+
+      font-size: 11px;
+
+      margin-bottom: 8px;
     }
 
     .intro-title strong {
-      display: block;
-      margin-top: 8px;
-      font-size: clamp(28px, 7vw, 52px);
+
+      font-size:
+        clamp(27px, 6vw, 50px);
+
+      white-space: nowrap;
+
     }
 
-    @keyframes introTitle {
+    @keyframes titleAppear {
+
       to {
         opacity: 1;
-        transform: translateY(-5px);
+        transform:
+          translateX(-50%)
+          translateY(-5px);
       }
+
     }
 
-    /* Skip button */
+    /* =====================================
+       SKIP BUTTON
+    ===================================== */
 
     .skip-button {
-      position: absolute;
-      right: 18px;
-      top: 18px;
-      z-index: 50;
 
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(0,0,0,.25);
+      position: absolute;
+
+      top: 20px;
+      right: 20px;
+
+      z-index: 110;
+
+      padding: 9px 13px;
+
+      border-radius: 10px;
+
+      border:
+        1px solid rgba(255,255,255,.4);
+
+      background:
+        rgba(0,0,0,.28);
+
       color: white;
-      padding: 9px 12px;
-      border-radius: 11px;
+
+      font-family: Arial, Helvetica, sans-serif;
 
       font-weight: bold;
+
       cursor: pointer;
+
+      backdrop-filter: blur(7px);
     }
 
     .skip-button:hover {
-      background: rgba(0,0,0,.4);
+      background:
+        rgba(0,0,0,.48);
     }
 
-    /* Mobile */
+    /* =====================================
+       INTRO EXIT
+    ===================================== */
+
+    .intro.hide {
+
+      animation:
+        introExit 1.2s ease forwards;
+
+    }
+
+    @keyframes introExit {
+
+      to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+    }
+
+    /* =====================================
+       MOBILE
+    ===================================== */
 
     @media (max-width: 600px) {
 
-      .decorations {
-        font-size: 40px;
+      .intro,
+      .intro-image {
+
+        background-position:
+          60% center;
+
       }
 
-      .santa {
-        font-size: 58px;
+      h1 {
+
+        letter-spacing:
+          -2px;
+
+      }
+
+      .open-button {
+
+        width: 100%;
+
+        max-width: 330px;
+
+      }
+
+      .intro-title strong {
+
+        white-space: normal;
+
       }
 
     }
+
+    /* =====================================
+       REDUCED MOTION
+    ===================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -451,36 +620,42 @@
         transform: none;
       }
 
-      .light,
-      .decoration {
+      .snowflake,
+      .intro-image,
+      .snow-blast {
         animation: none;
       }
 
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- HOME PAGE -->
+  <!-- REAL HOME PAGE -->
 
   <main class="home" id="home">
 
+    <div class="snow" aria-hidden="true">
+
+      <div class="snowflake">❄</div>
+      <div class="snowflake">•</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">•</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">•</div>
+      <div class="snowflake">❄</div>
+      <div class="snowflake">•</div>
+      <div class="snowflake">❄</div>
+
+    </div>
+
+
     <div class="home-content">
 
-      <div class="lights" aria-hidden="true">
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-      </div>
-
       <div class="eyebrow">
-        🎄 Christmas 2026
+        Christmas 2026
       </div>
 
       <h1>
@@ -489,31 +664,44 @@
       </h1>
 
       <p class="subtitle">
-        My Christmas wishlist for 2026.
+        My Christmas wishlist for 2026.<br>
         Tap below to see everything I'm hoping for.
       </p>
 
       <a
-        class="open-button"
         href="./wishlist.html"
+        class="open-button"
       >
         🎁 OPEN MY CHRISTMAS LIST →
       </a>
-
-      <div class="decorations" aria-hidden="true">
-        <div class="decoration">🎁</div>
-        <div class="decoration">🎄</div>
-        <div class="decoration">🎁</div>
-      </div>
 
     </div>
 
   </main>
 
 
-  <!-- CHRISTMAS INTRO -->
+  <!-- REALISTIC INTRO -->
 
-  <div class="intro" id="intro">
+  <section
+    class="intro"
+    id="intro"
+  >
+
+    <div class="intro-image"></div>
+
+    <div class="intro-title">
+
+      <small>
+        A very important delivery
+      </small>
+
+      <strong>
+        Ben's Christmas List
+      </strong>
+
+    </div>
+
+    <div class="snow-blast"></div>
 
     <button
       class="skip-button"
@@ -523,53 +711,50 @@
       Skip Intro
     </button>
 
-    <div class="moon"></div>
-
-    <div class="stars" aria-hidden="true">
-      <div class="star">✦</div>
-      <div class="star">✦</div>
-      <div class="star">✦</div>
-      <div class="star">✦</div>
-      <div class="star">✦</div>
-      <div class="star">✦</div>
-    </div>
-
-    <div class="mountains"></div>
-
-    <div class="snow-ground"></div>
-
-    <div class="santa">
-      🎅🛷💨
-    </div>
-
-    <div class="snow-wave"></div>
-
-    <div class="intro-title">
-      <small>A very important delivery</small>
-      <strong>Ben's Christmas List</strong>
-    </div>
-
-  </div>
+  </section>
 
 
   <script>
 
-    const intro = document.getElementById("intro");
-    const home = document.getElementById("home");
-    const skipButton = document.getElementById("skipButton");
+    const intro =
+      document.getElementById("intro");
+
+    const home =
+      document.getElementById("home");
+
+    const skipButton =
+      document.getElementById("skipButton");
+
 
     function revealHome() {
+
       intro.classList.add("hide");
-      home.classList.add("show");
+
+      home.classList.add("revealed");
+
     }
 
-    /* Automatically reveal the home page after the intro */
 
-    setTimeout(revealHome, 5700);
+    /*
+      The realistic intro lasts
+      about 7 seconds.
+    */
 
-    /* Skip Intro button */
+    setTimeout(
+      revealHome,
+      7000
+    );
 
-    skipButton.addEventListener("click", revealHome);
+
+    /*
+      Skip button
+    */
+
+    skipButton.addEventListener(
+      "click",
+      revealHome
+    );
+
 
   </script>
 
