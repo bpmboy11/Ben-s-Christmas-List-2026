@@ -24,9 +24,9 @@
       overflow: hidden;
     }
 
-    /* =========================
+    /* =====================================================
        HOME PAGE
-    ========================= */
+    ===================================================== */
 
     .home {
       position: relative;
@@ -37,131 +37,167 @@
       align-items: center;
       justify-content: center;
 
-      background:
-        linear-gradient(
-          rgba(3, 10, 17, 0.16),
-          rgba(3, 10, 17, 0.30)
-        ),
-        url("christmas intro.png")
-        center center / cover no-repeat;
+      background: #0b151d;
     }
+
+    /*
+      Blurred background image.
+      This only affects the HOME PAGE.
+    */
 
     .home::before {
       content: "";
+
       position: absolute;
-      inset: -5%;
+      inset: -6%;
 
       background:
         url("christmas intro.png")
         center center / cover no-repeat;
 
+      filter: blur(6px);
+
+      transform: scale(1.03);
+
       z-index: 0;
 
-      animation: slowCamera 16s ease-in-out infinite alternate;
+      animation:
+        homeCamera 16s ease-in-out infinite alternate;
     }
 
-    @keyframes slowCamera {
+    @keyframes homeCamera {
       from {
-        transform: scale(1);
+        transform: scale(1.03);
       }
 
       to {
-        transform: scale(1.07);
+        transform: scale(1.09);
       }
     }
 
+    /*
+      Dark overlay so the text is easier to read.
+    */
+
     .home::after {
       content: "";
+
       position: absolute;
       inset: 0;
 
       background:
         linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0.03),
-          rgba(0, 0, 0, 0.28)
+          rgba(2, 9, 15, 0.22),
+          rgba(2, 9, 15, 0.42)
         );
 
       z-index: 1;
+
       pointer-events: none;
     }
 
-    /* =========================
+    /* =====================================================
        HOME CONTENT
-    ========================= */
+    ===================================================== */
 
     .home-content {
       position: relative;
+
       z-index: 5;
 
       width: min(850px, 92%);
+
       text-align: center;
 
-      padding: 30px 20px;
+      padding: 35px 20px;
 
       opacity: 0;
-      transform: translateY(22px);
+
+      transform:
+        translateY(24px)
+        scale(0.98);
     }
 
     .home.revealed .home-content {
-      animation: revealHome 1.4s ease forwards;
+      animation:
+        revealHome 1.5s ease forwards;
     }
 
     @keyframes revealHome {
       to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0)
+          scale(1);
       }
     }
 
     .eyebrow {
       font-family: Arial, Helvetica, sans-serif;
+
       font-size: 13px;
+
       letter-spacing: 5px;
+
       text-transform: uppercase;
+
       font-weight: bold;
 
+      color: #ffffff;
+
       text-shadow:
-        0 3px 15px rgba(0, 0, 0, 0.85);
+        0 3px 15px rgba(0, 0, 0, 0.9);
     }
 
     h1 {
-      margin: 13px 0;
+      margin: 14px 0;
 
       font-size:
-        clamp(48px, 9vw, 96px);
+        clamp(52px, 10vw, 100px);
 
       line-height: 0.9;
+
       letter-spacing: -4px;
 
+      color: white;
+
       text-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.85);
+        0 4px 20px rgba(0, 0, 0, 0.9),
+        0 0 35px rgba(0, 0, 0, 0.3);
     }
 
     .subtitle {
       max-width: 560px;
-      margin: 20px auto 0;
 
-      font-family: Arial, Helvetica, sans-serif;
+      margin: 21px auto 0;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
       font-size:
         clamp(16px, 2.5vw, 19px);
 
-      line-height: 1.5;
-      color: #f1f3f1;
+      line-height: 1.55;
+
+      color: #f2f3f2;
 
       text-shadow:
-        0 3px 14px rgba(0, 0, 0, 0.85);
+        0 3px 14px rgba(0, 0, 0, 0.9);
     }
 
-    /* =========================
-       REAL BUTTON
-    ========================= */
+    /* =====================================================
+       REAL HOME BUTTON
+    ===================================================== */
 
     .open-button {
       display: inline-block;
 
       margin-top: 32px;
+
       padding: 16px 28px;
 
       border-radius: 14px;
@@ -170,25 +206,32 @@
         linear-gradient(
           135deg,
           #8a2023,
-          #601215
+          #5f1114
         );
 
       border:
-        1px solid rgba(255,255,255,0.5);
+        1px solid rgba(255, 255, 255, 0.55);
 
       color: white;
+
       text-decoration: none;
 
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       font-size: 16px;
+
       font-weight: bold;
 
       box-shadow:
-        0 12px 35px rgba(0,0,0,0.45);
+        0 12px 35px rgba(0, 0, 0, 0.45);
 
       transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
     .open-button:hover {
@@ -196,47 +239,65 @@
         translateY(-4px)
         scale(1.02);
 
+      background:
+        linear-gradient(
+          135deg,
+          #982529,
+          #6f1417
+        );
+
       box-shadow:
-        0 18px 42px rgba(0,0,0,0.55);
+        0 18px 42px rgba(0, 0, 0, 0.55);
     }
 
-    /* =========================
-       FALLING SNOW
-    ========================= */
+    .open-button:active {
+      transform:
+        translateY(0)
+        scale(0.98);
+    }
+
+    /* =====================================================
+       HOME SNOW
+    ===================================================== */
 
     .snow {
       position: absolute;
+
       inset: 0;
 
       z-index: 4;
-      pointer-events: none;
+
       overflow: hidden;
+
+      pointer-events: none;
     }
 
     .flake {
       position: absolute;
-      top: -35px;
+
+      top: -30px;
 
       color: white;
+
       opacity: 0.72;
 
       text-shadow:
-        0 0 8px rgba(255,255,255,0.75);
+        0 0 8px rgba(255, 255, 255, 0.8);
 
       animation:
-        snowFall linear infinite,
-        snowDrift ease-in-out infinite alternate;
+        fall linear infinite,
+        drift ease-in-out infinite alternate;
     }
 
     .flake:nth-child(1) {
       left: 4%;
-      font-size: 14px;
+      font-size: 13px;
       animation-duration: 8s, 3s;
     }
 
     .flake:nth-child(2) {
-      left: 13%;
-      font-size: 10px;
+      left: 14%;
+      font-size: 9px;
       animation-duration: 11s, 4s;
       animation-delay: 2s;
     }
@@ -249,56 +310,58 @@
     }
 
     .flake:nth-child(4) {
-      left: 35%;
+      left: 34%;
       font-size: 11px;
       animation-duration: 12s, 4s;
       animation-delay: 3s;
     }
 
     .flake:nth-child(5) {
-      left: 47%;
-      font-size: 16px;
+      left: 46%;
+      font-size: 15px;
       animation-duration: 10s, 3s;
     }
 
     .flake:nth-child(6) {
-      left: 59%;
-      font-size: 9px;
+      left: 58%;
+      font-size: 10px;
       animation-duration: 13s, 4s;
       animation-delay: 2s;
     }
 
     .flake:nth-child(7) {
-      left: 71%;
+      left: 70%;
       font-size: 17px;
       animation-duration: 8s, 3s;
       animation-delay: 1s;
     }
 
     .flake:nth-child(8) {
-      left: 83%;
+      left: 82%;
       font-size: 12px;
       animation-duration: 11s, 4s;
     }
 
     .flake:nth-child(9) {
       left: 94%;
-      font-size: 15px;
+      font-size: 16px;
       animation-duration: 9s, 3s;
       animation-delay: 2s;
     }
 
-    @keyframes snowFall {
+    @keyframes fall {
       from {
-        transform: translateY(-35px);
+        transform:
+          translateY(-30px);
       }
 
       to {
-        transform: translateY(110vh);
+        transform:
+          translateY(110vh);
       }
     }
 
-    @keyframes snowDrift {
+    @keyframes drift {
       from {
         margin-left: -14px;
       }
@@ -308,30 +371,39 @@
       }
     }
 
-    /* =========================
-       CINEMATIC INTRO
-    ========================= */
+    /* =====================================================
+       INTRO
+    ===================================================== */
 
     .intro {
       position: fixed;
+
       inset: 0;
 
       z-index: 100;
+
       overflow: hidden;
 
       background:
-        #06101a
+        #07101a
         url("christmas intro.png")
         center center / cover no-repeat;
     }
 
+    /*
+      Sharp version of the image for the intro.
+    */
+
     .intro-image {
       position: absolute;
-      inset: -5%;
+
+      inset: -4%;
 
       background:
         url("christmas intro.png")
         center center / cover no-repeat;
+
+      z-index: 1;
 
       animation:
         introCamera 7s ease-in-out forwards;
@@ -347,55 +419,66 @@
       }
     }
 
+    /*
+      Slight cinematic darkening.
+    */
+
     .intro::after {
       content: "";
+
       position: absolute;
+
       inset: 0;
 
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,0.02),
-          rgba(0,0,0,0.20)
+          rgba(0, 0, 0, 0.02),
+          rgba(0, 0, 0, 0.22)
         );
 
       z-index: 2;
+
+      pointer-events: none;
     }
 
-    /* =========================
-       BLOWING SNOW
-    ========================= */
+    /* =====================================================
+       BLOWING SNOW TRANSITION
+    ===================================================== */
 
     .snow-blast {
       position: absolute;
+
       inset: -25%;
 
-      z-index: 8;
+      z-index: 10;
+
       pointer-events: none;
+
       opacity: 0;
 
       background:
 
         radial-gradient(
           circle at 5% 20%,
-          rgba(255,255,255,.95) 0 2px,
+          rgba(255,255,255,.98) 0 2px,
           transparent 4px
         ),
 
         radial-gradient(
-          circle at 14% 42%,
+          circle at 15% 45%,
           rgba(255,255,255,.90) 0 3px,
           transparent 5px
         ),
 
         radial-gradient(
-          circle at 25% 68%,
+          circle at 26% 70%,
           rgba(255,255,255,.85) 0 2px,
           transparent 4px
         ),
 
         radial-gradient(
-          circle at 39% 28%,
+          circle at 40% 28%,
           rgba(255,255,255,.95) 0 3px,
           transparent 5px
         ),
@@ -407,19 +490,19 @@
         ),
 
         radial-gradient(
-          circle at 67% 33%,
+          circle at 67% 34%,
           rgba(255,255,255,.95) 0 3px,
           transparent 5px
         ),
 
         radial-gradient(
-          circle at 81% 72%,
+          circle at 82% 72%,
           rgba(255,255,255,.90) 0 2px,
           transparent 4px
         ),
 
         radial-gradient(
-          circle at 94% 45%,
+          circle at 95% 45%,
           rgba(255,255,255,.95) 0 3px,
           transparent 5px
         );
@@ -435,7 +518,7 @@
         190px 135px;
 
       animation:
-        snowSweep 6.2s ease-out .3s forwards;
+        snowSweep 6.2s ease-out 0.3s forwards;
     }
 
     @keyframes snowSweep {
@@ -449,11 +532,11 @@
       }
 
       25% {
-        opacity: .22;
+        opacity: 0.22;
       }
 
       52% {
-        opacity: .92;
+        opacity: 0.92;
 
         transform:
           translateX(5%)
@@ -461,7 +544,7 @@
       }
 
       76% {
-        opacity: .48;
+        opacity: 0.48;
       }
 
       100% {
@@ -473,9 +556,9 @@
       }
     }
 
-    /* =========================
-       SKIP BUTTON
-    ========================= */
+    /* =====================================================
+       SKIP INTRO
+    ===================================================== */
 
     .skip-button {
       position: absolute;
@@ -488,32 +571,38 @@
       padding: 9px 13px;
 
       border:
-        1px solid rgba(255,255,255,.38);
+        1px solid rgba(255,255,255,.4);
 
       border-radius: 10px;
 
       background:
-        rgba(0,0,0,.28);
+        rgba(0,0,0,.30);
 
       color: white;
 
       cursor: pointer;
 
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       font-size: 13px;
+
       font-weight: bold;
 
-      backdrop-filter: blur(7px);
+      backdrop-filter:
+        blur(7px);
     }
 
     .skip-button:hover {
       background:
-        rgba(0,0,0,.48);
+        rgba(0,0,0,.50);
     }
 
-    /* =========================
+    /* =====================================================
        INTRO EXIT
-    ========================= */
+    ===================================================== */
 
     .intro.hide {
       animation:
@@ -521,39 +610,50 @@
     }
 
     @keyframes introExit {
+
       to {
         opacity: 0;
+
         visibility: hidden;
+
         pointer-events: none;
       }
+
     }
 
-    /* =========================
+    /* =====================================================
        MOBILE
-    ========================= */
+    ===================================================== */
 
     @media (max-width: 600px) {
 
-      .home,
       .home::before,
+      .home {
+        background-position:
+          58% center;
+      }
+
       .intro,
       .intro-image {
-        background-position: 58% center;
+        background-position:
+          58% center;
       }
 
       h1 {
-        letter-spacing: -2px;
+        letter-spacing:
+          -2px;
       }
 
       .open-button {
         width: 100%;
+
         max-width: 330px;
       }
     }
 
-    /* =========================
+    /* =====================================================
        REDUCED MOTION
-    ========================= */
+    ===================================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -563,6 +663,7 @@
 
       .home-content {
         opacity: 1;
+
         transform: none;
       }
 
@@ -572,6 +673,7 @@
       .snow-blast {
         animation: none;
       }
+
     }
 
   </style>
@@ -579,11 +681,21 @@
 
 <body>
 
-  <!-- HOME PAGE -->
+  <!-- =====================================================
+       HOME PAGE
+  ===================================================== -->
 
-  <main class="home" id="home">
+  <main
+    class="home"
+    id="home"
+  >
 
-    <div class="snow" aria-hidden="true">
+    <!-- Animated snow -->
+
+    <div
+      class="snow"
+      aria-hidden="true"
+    >
 
       <div class="flake">❄</div>
       <div class="flake">•</div>
@@ -596,6 +708,9 @@
       <div class="flake">❄</div>
 
     </div>
+
+
+    <!-- REAL WEBSITE CONTENT -->
 
     <div class="home-content">
 
@@ -627,18 +742,26 @@
   </main>
 
 
-  <!-- CINEMATIC INTRO -->
+  <!-- =====================================================
+       CINEMATIC INTRO
+  ===================================================== -->
 
   <section
     class="intro"
     id="intro"
   >
 
+    <!-- SHARP background image -->
+
     <div class="intro-image"></div>
+
+
+    <!-- Blowing snow -->
 
     <div class="snow-blast"></div>
 
-    <!-- REAL CLICKABLE BUTTON -->
+
+    <!-- REAL BUTTON -->
 
     <button
       class="skip-button"
@@ -672,7 +795,9 @@
     }
 
 
-    /* Intro lasts about 7 seconds */
+    /*
+      Intro runs for about 7 seconds.
+    */
 
     setTimeout(
       revealHome,
@@ -680,7 +805,10 @@
     );
 
 
-    /* Skip Intro */
+    /*
+      Skip Intro is a real
+      working HTML button.
+    */
 
     skipButton.addEventListener(
       "click",
