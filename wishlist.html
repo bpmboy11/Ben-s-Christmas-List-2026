@@ -3,855 +3,528 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Ben's Christmas List 🎄</title>
-
+  <meta name="theme-color" content="#101713">
+  <title>Ben's Christmas List 2026</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, #2c4435 0%, #111812 48%, #080d0a 100%);
-      color: white;
       min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #f5f7f4;
+      background: radial-gradient(circle at top, #294233 0, #111812 48%, #080d0a 100%);
       overflow-x: hidden;
     }
-
-    .page {
-      position: relative;
-      min-height: 100vh;
-      padding: 30px 0 65px;
-      overflow: hidden;
-    }
-
-    /* Snow */
+    .page { position: relative; min-height: 100vh; padding: 26px 0 60px; }
     .snow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
+      position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
     }
-
     .flake {
-      position: absolute;
-      top: -40px;
-      color: white;
-      opacity: 0.7;
-      animation: snowFall linear infinite;
-      user-select: none;
+      position: absolute; top: -28px; color: rgba(255,255,255,.78);
+      text-shadow: 0 0 9px rgba(255,255,255,.5);
+      animation: fall linear infinite;
     }
+    .flake:nth-child(1){left:4%;font-size:15px;animation-duration:9s}
+    .flake:nth-child(2){left:13%;font-size:10px;animation-duration:12s;animation-delay:2s}
+    .flake:nth-child(3){left:24%;font-size:18px;animation-duration:10s;animation-delay:4s}
+    .flake:nth-child(4){left:36%;font-size:12px;animation-duration:13s;animation-delay:1s}
+    .flake:nth-child(5){left:48%;font-size:16px;animation-duration:9s;animation-delay:3s}
+    .flake:nth-child(6){left:60%;font-size:11px;animation-duration:12s;animation-delay:5s}
+    .flake:nth-child(7){left:72%;font-size:18px;animation-duration:10s;animation-delay:2s}
+    .flake:nth-child(8){left:84%;font-size:12px;animation-duration:13s;animation-delay:4s}
+    .flake:nth-child(9){left:95%;font-size:16px;animation-duration:9s;animation-delay:1s}
+    @keyframes fall { from { transform: translateY(-30px) translateX(0) rotate(0); } to { transform: translateY(110vh) translateX(25px) rotate(300deg); } }
 
-    .flake:nth-child(1) {
-      left: 4%;
-      font-size: 17px;
-      animation-duration: 8s;
-      animation-delay: 0s;
-    }
-
-    .flake:nth-child(2) {
-      left: 12%;
-      font-size: 11px;
-      animation-duration: 11s;
-      animation-delay: 2s;
-    }
-
-    .flake:nth-child(3) {
-      left: 22%;
-      font-size: 20px;
-      animation-duration: 10s;
-      animation-delay: 4s;
-    }
-
-    .flake:nth-child(4) {
-      left: 34%;
-      font-size: 13px;
-      animation-duration: 13s;
-      animation-delay: 1s;
-    }
-
-    .flake:nth-child(5) {
-      left: 46%;
-      font-size: 18px;
-      animation-duration: 9s;
-      animation-delay: 3s;
-    }
-
-    .flake:nth-child(6) {
-      left: 58%;
-      font-size: 12px;
-      animation-duration: 12s;
-      animation-delay: 5s;
-    }
-
-    .flake:nth-child(7) {
-      left: 70%;
-      font-size: 19px;
-      animation-duration: 8s;
-      animation-delay: 2s;
-    }
-
-    .flake:nth-child(8) {
-      left: 82%;
-      font-size: 14px;
-      animation-duration: 11s;
-      animation-delay: 4s;
-    }
-
-    .flake:nth-child(9) {
-      left: 94%;
-      font-size: 17px;
-      animation-duration: 10s;
-      animation-delay: 1s;
-    }
-
-    @keyframes snowFall {
-      0% {
-        transform: translateY(-40px) translateX(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(50vh) translateX(22px) rotate(180deg);
-      }
-
-      100% {
-        transform: translateY(110vh) translateX(-18px) rotate(360deg);
-      }
-    }
-
-    /* Main container */
-    .container {
-      position: relative;
-      z-index: 2;
-      width: min(1000px, 92%);
-      margin: auto;
-    }
-
-    /* Top bar */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 24px;
-      animation: fadeDown 0.7s ease both;
-    }
-
+    .container { position: relative; z-index: 2; width: min(1100px, 93%); margin: 0 auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:22px; }
     .home-button {
-      display: inline-block;
-      padding: 11px 16px;
-      border-radius: 12px;
-      background: rgba(24, 34, 28, 0.9);
-      border: 1px solid #34423a;
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      transition: 0.2s;
+      display:inline-block; padding:10px 15px; border-radius:12px;
+      background:rgba(20,31,24,.88); border:1px solid #526257;
+      color:#fff; text-decoration:none; font-size:14px; font-weight:700;
+      transition:transform .2s,border-color .2s;
     }
+    .home-button:hover { transform:translateY(-2px); border-color:#d7e4da; }
+    .year { color:#c0ccc3; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+    .lights { display:flex; justify-content:center; gap:16px; margin:0 auto 20px; }
+    .light { width:12px; height:12px; border-radius:50%; background:#e7f0e9; box-shadow:0 0 12px rgba(231,240,233,.6); animation:glow 1.5s ease-in-out infinite alternate; }
+    .light:nth-child(2){animation-delay:.15s}.light:nth-child(3){animation-delay:.3s}.light:nth-child(4){animation-delay:.45s}
+    .light:nth-child(5){animation-delay:.6s}.light:nth-child(6){animation-delay:.75s}.light:nth-child(7){animation-delay:.9s}.light:nth-child(8){animation-delay:1.05s}
+    @keyframes glow { from{opacity:.38;transform:scale(.88)} to{opacity:1;transform:scale(1.16)} }
+    .header { text-align:center; margin-bottom:28px; animation:enter .8s ease both; }
+    .eyebrow { color:#c9d5cd; font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; }
+    h1 { margin:9px 0 10px; font-size:clamp(39px,7vw,68px); line-height:1; letter-spacing:-2px; }
+    .subtitle { color:#b9c5bd; font-size:16px; margin:0; }
+    @keyframes enter { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 
-    .home-button:hover {
-      transform: translateY(-2px);
-      border-color: #d7e4da;
+    .filter-panel {
+      background:rgba(17,27,21,.80); border:1px solid rgba(160,181,165,.25);
+      border-radius:20px; padding:17px; margin-bottom:25px; backdrop-filter:blur(7px);
     }
-
-    .year {
-      color: #9eaaa2;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: bold;
+    .filter-label { display:block; color:#9fac a3; color:#aebbb2; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:0 0 10px 2px; }
+    .filter-row { display:flex; flex-wrap:wrap; gap:9px; }
+    .filter-row + .filter-label { margin-top:17px; }
+    .filter-button {
+      border:1px solid #3c4c41; background:#1a271e; color:#f4f7f4;
+      border-radius:12px; padding:11px 15px; font-weight:700; font-size:13px;
+      cursor:pointer; transition:transform .18s,background .18s,border-color .18s;
     }
-
-    /* Christmas lights */
-    .lights {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-      animation: fadeDown 0.8s ease 0.1s both;
-    }
-
-    .light {
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #d7e4da;
-      box-shadow: 0 0 10px rgba(215, 228, 218, 0.55);
-      animation: lightPulse 1.5s infinite alternate;
-    }
-
-    .light:nth-child(2) { animation-delay: .15s; }
-    .light:nth-child(3) { animation-delay: .30s; }
-    .light:nth-child(4) { animation-delay: .45s; }
-    .light:nth-child(5) { animation-delay: .60s; }
-    .light:nth-child(6) { animation-delay: .75s; }
-    .light:nth-child(7) { animation-delay: .90s; }
-    .light:nth-child(8) { animation-delay: 1.05s; }
-
-    @keyframes lightPulse {
-      from {
-        opacity: .4;
-        transform: scale(.88);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1.18);
-      }
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-15px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      animation: headerIn 0.8s ease both;
-    }
-
-    .eyebrow {
-      font-size: 14px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #bdc9c1;
-      font-weight: bold;
-    }
-
-    h1 {
-      font-size: clamp(42px, 8vw, 72px);
-      margin: 9px 0;
-      line-height: 1;
-    }
-
-    .subtitle {
-      color: #aab5ae;
-      font-size: 17px;
-      margin: 0;
-    }
-
-    @keyframes headerIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px) scale(.98);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Price buttons */
-    .ranges {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 30px;
-      animation: fadeUp 0.8s ease 0.15s both;
-    }
-
-    .range-button {
-      border: 1px solid #34423a;
-      background: rgba(24, 34, 28, 0.92);
-      color: white;
-      padding: 17px 10px;
-      border-radius: 16px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-      transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
-    }
-
-    .range-button:hover {
-      transform: translateY(-3px) scale(1.01);
-      border-color: #b8c7bc;
-    }
-
-    .range-button:active {
-      transform: scale(.97);
-    }
-
-    .range-button.active {
-      background: #d7e4da;
-      color: #101713;
-      border-color: #d7e4da;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Section title */
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 26px;
-    }
-
-    .count {
-      color: #929e96;
-      font-size: 14px;
-    }
-
-    /* Product cards */
-    .items {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
+    .filter-button:hover { transform:translateY(-2px); border-color:#b4c5b8; }
+    .filter-button.active { background:#d7e4da; color:#101713; border-color:#d7e4da; }
+    .section-title { display:flex; justify-content:space-between; align-items:end; gap:10px; margin:0 2px 14px; }
+    .section-title h2 { margin:0; font-size:25px; }
+    .count { color:#a7b4aa; font-size:13px; }
+    .items { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
     .item {
-      background: rgba(24, 34, 28, 0.97);
-      border: 1px solid #34423a;
-      border-radius: 20px;
-      padding: 15px;
-      overflow: hidden;
-      transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-      animation: cardIn 0.5s ease both;
+      min-width:0; overflow:hidden; border-radius:19px; padding:13px;
+      background:rgba(22,32,25,.96); border:1px solid #3c4b40;
+      box-shadow:0 10px 28px rgba(0,0,0,.12);
+      animation:cardIn .45s ease both;
+      transition:transform .2s,border-color .2s,box-shadow .2s;
     }
-
-    .item:hover {
-      transform: translateY(-6px);
-      border-color: #75857a;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.22);
+    .item:hover { transform:translateY(-4px); border-color:#87998c; box-shadow:0 16px 32px rgba(0,0,0,.2); }
+    @keyframes cardIn { from{opacity:0;transform:translateY(15px) scale(.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .image-wrap {
+      height:205px; border-radius:14px; background:#f2f4f1; overflow:hidden;
+      display:flex; align-items:center; justify-content:center; position:relative;
     }
-
-    @keyframes cardIn {
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(.97);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    .product-image { width:100%; height:100%; object-fit:contain; display:block; padding:8px; }
+    .photo-placeholder {
+      width:100%; height:100%; display:flex; flex-direction:column; justify-content:center;
+      align-items:center; gap:8px; padding:15px; text-align:center;
+      background:linear-gradient(145deg,#e8eee9,#cbd8ce); color:#405247;
     }
-
-    .product-image {
-      width: 100%;
-      height: 250px;
-      object-fit: contain;
-      display: block;
-      background: white;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      transition: transform .3s ease;
-    }
-
-    .item:hover .product-image {
-      transform: scale(1.035);
-    }
-
-    .item-info {
-      padding: 0 3px 3px;
-    }
-
-    .item h3 {
-      margin: 0 0 6px;
-      font-size: 20px;
-    }
-
-    .price {
-      font-weight: bold;
-      color: #d7e4da;
-    }
-
-    .category {
-      color: #929e96;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .size-badge {
-      display: inline-block;
-      margin-top: 9px;
-      padding: 6px 9px;
-      border-radius: 9px;
-      background: #253229;
-      color: #d7e4da;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
+    .placeholder-mark { width:54px; height:54px; border:2px solid rgba(64,82,71,.35); border-radius:16px; display:grid; place-items:center; font-size:23px; font-weight:800; }
+    .photo-placeholder span:last-child { font-size:10px; font-weight:800; letter-spacing:1.5px; }
+    .item-info { padding:13px 3px 3px; }
+    .item h3 { margin:0 0 7px; font-size:18px; line-height:1.25; }
+    .price { color:#dce9df; font-weight:800; font-size:15px; }
+    .item-note { color:#aebbb2; font-size:12px; line-height:1.45; margin-top:7px; min-height:17px; }
+    .meta-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+    .meta { display:inline-block; border-radius:8px; padding:5px 8px; font-size:11px; font-weight:700; background:#29382e; color:#dce9df; }
+    .meta.warn { background:#493b21; color:#f1dfb7; }
     .view-button {
-      display: inline-block;
-      margin-top: 13px;
-      padding: 11px 15px;
-      border-radius: 11px;
-      background: #d7e4da;
-      color: #101713;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      transition: .2s;
+      display:inline-block; margin-top:13px; padding:10px 14px; border-radius:10px;
+      background:#d7e4da; color:#101713; text-decoration:none; font-size:13px; font-weight:800;
+      transition:transform .18s,opacity .18s;
     }
-
-    .view-button:hover {
-      transform: translateY(-2px);
-      opacity: .88;
-    }
-
-    /* Empty price range */
+    .view-button:hover { transform:translateY(-2px); opacity:.9; }
     .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 48px 20px;
-      background: rgba(24, 34, 28, 0.96);
-      border: 1px solid #34423a;
-      border-radius: 20px;
-      animation: cardIn .5s ease both;
+      grid-column:1/-1; text-align:center; padding:42px 20px;
+      border-radius:18px; background:rgba(22,32,25,.96); border:1px solid #3c4b40; color:#bdc9c1;
     }
-
-    .empty-icon {
-      font-size: 44px;
-      margin-bottom: 10px;
+    .empty strong { display:block; margin-bottom:6px; color:#fff; font-size:19px; }
+    .footer { margin-top:36px; text-align:center; color:#839187; font-size:12px; letter-spacing:.5px; }
+    .fine-print { max-width:720px; margin:10px auto 0; text-align:center; color:#8f9d93; font-size:11px; line-height:1.5; }
+    @media (max-width:850px) { .items { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:560px) {
+      .container { width:94%; }
+      .items { grid-template-columns:1fr; }
+      .image-wrap { height:235px; }
+      .filter-panel { padding:13px; }
+      .filter-button { flex:1 1 calc(50% - 9px); }
+      .topbar { align-items:flex-start; }
+      .year { text-align:right; }
     }
-
-    .empty strong {
-      display: block;
-      font-size: 19px;
-      margin-bottom: 5px;
-    }
-
-    .empty div:last-child {
-      color: #929e96;
-      font-size: 14px;
-    }
-
-    .footer {
-      text-align: center;
-      color: #68756d;
-      margin-top: 42px;
-      font-size: 13px;
-    }
-
-    /* Floating decorations */
-    .decor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 1;
-      font-size: 34px;
-      opacity: .55;
-      animation: floatDecor 4s ease-in-out infinite;
-    }
-
-    .decor.tree {
-      left: 3%;
-      bottom: 8%;
-    }
-
-    .decor.gift {
-      right: 4%;
-      bottom: 12%;
-      animation-delay: 1s;
-    }
-
-    @keyframes floatDecor {
-      0%, 100% {
-        transform: translateY(0) rotate(-3deg);
-      }
-
-      50% {
-        transform: translateY(-13px) rotate(3deg);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .ranges {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .items {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 260px;
-      }
-
-      .decor {
-        display: none;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .container {
-        width: 94%;
-      }
-
-      .ranges {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 225px;
-      }
-
-      .top-bar {
-        align-items: flex-start;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .flake,
-      .light,
-      .item,
-      .decor,
-      .header,
-      .top-bar,
-      .lights,
-      .ranges {
-        animation: none !important;
-      }
-
-      .item:hover,
-      .range-button:hover,
-      .view-button:hover {
-        transform: none;
-      }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation:none!important; transition:none!important; }
     }
   </style>
 </head>
-
 <body>
-
 <div class="page">
-
   <div class="snow" aria-hidden="true">
-    <div class="flake">❄</div>
-    <div class="flake">•</div>
-    <div class="flake">❄</div>
-    <div class="flake">•</div>
-    <div class="flake">❄</div>
-    <div class="flake">•</div>
-    <div class="flake">❄</div>
-    <div class="flake">•</div>
-    <div class="flake">❄</div>
+    <div class="flake">❄</div><div class="flake">•</div><div class="flake">❄</div>
+    <div class="flake">•</div><div class="flake">❄</div><div class="flake">•</div>
+    <div class="flake">❄</div><div class="flake">•</div><div class="flake">❄</div>
   </div>
 
-  <div class="decor tree" aria-hidden="true">🎄</div>
-  <div class="decor gift" aria-hidden="true">🎁</div>
-
-  <div class="container">
-
-    <div class="top-bar">
-      <a class="home-button" href="./index.html">
-        ← Home
-      </a>
-
-      <div class="year">
-        Christmas 2026
-      </div>
+  <main class="container">
+    <div class="topbar">
+      <a class="home-button" href="./index.html">← Home</a>
+      <div class="year">Christmas 2026</div>
     </div>
 
     <div class="lights" aria-hidden="true">
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
-      <div class="light"></div>
+      <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+      <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
     </div>
 
-    <div class="header">
-      <div class="eyebrow">🎁 My Wishlist</div>
+    <header class="header">
+      <div class="eyebrow">Ben's Wishlist</div>
+      <h1>Christmas List</h1>
+      <p class="subtitle">Browse by price or category. Tap “View Item” for the product page.</p>
+    </header>
 
-      <h1>Ben's Christmas List</h1>
+    <section class="filter-panel" aria-label="Wishlist filters">
+      <span class="filter-label">Filter by price</span>
+      <div class="filter-row" id="priceFilters">
+        <button class="filter-button active" data-price="all">Everything</button>
+        <button class="filter-button" data-price="under50">Under $50</button>
+        <button class="filter-button" data-price="50to100">$50–$100</button>
+        <button class="filter-button" data-price="100plus">$100+</button>
+      </div>
 
-      <p class="subtitle">
-        Tap a price range to explore the list.
-      </p>
-    </div>
-
-    <div class="ranges">
-
-      <button
-        class="range-button active"
-        onclick="showItems('under50', this)"
-      >
-        Under $50
-      </button>
-
-      <button
-        class="range-button"
-        onclick="showItems('50to100', this)"
-      >
-        $50–$100
-      </button>
-
-      <button
-        class="range-button"
-        onclick="showItems('100plus', this)"
-      >
-        $100+
-      </button>
-
-      <button
-        class="range-button"
-        onclick="showItems('all', this)"
-      >
-        Everything
-      </button>
-
-    </div>
+      <span class="filter-label">Filter by category</span>
+      <div class="filter-row" id="categoryFilters">
+        <button class="filter-button active" data-category="all">All categories</button>
+        <button class="filter-button" data-category="shoes">Shoes</button>
+        <button class="filter-button" data-category="clothing">Clothing</button>
+        <button class="filter-button" data-category="tech">Tech & games</button>
+        <button class="filter-button" data-category="grooming">Grooming</button>
+        <button class="filter-button" data-category="food">Food & drinks</button>
+      </div>
+    </section>
 
     <div class="section-title">
-      <h2 id="title">Under $50</h2>
-      <div class="count" id="count"></div>
+      <h2 id="sectionHeading">Everything</h2>
+      <span class="count" id="itemCount"></span>
     </div>
 
-    <div class="items" id="items"></div>
+    <section class="items" id="items" aria-live="polite"></section>
 
-    <div class="footer">
-      🎄 Made for Christmas 2026 🎄
-    </div>
-
-  </div>
-
+    <footer class="footer">
+      Made for Christmas 2026
+      <p class="fine-print">
+        Prices are approximate snapshots and can change. Check the retailer for current size, color, stock, shipping, and checkout price.
+        Dr.Dent toothpaste tablets are fluoride-free; ask your dentist before using them in place of regular fluoride toothpaste.
+      </p>
+    </footer>
+  </main>
 </div>
 
 <script>
-
 const gifts = [
-
-  {
-    name: "Men's PSD",
-    price: "Under $50",
-    category: "Clothing",
-    size: "Men's Medium",
-    image: "PSD.avif",
-    link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322#lnk=sametab"
-  },
-
-  {
-    name: "Jorts",
-    price: "Under $50",
-    category: "Clothing",
-    size: "Medium",
-    image: "Jorts.webp",
-    link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510"
-  },
-
-  {
-    name: "Quarter Zip",
-    price: "Under $50",
-    category: "Clothing",
-    size: "Size S",
-    image: "Quarter Zip.jpg",
-    link: "https://www.amazon.com/JMIERR-Quarter-Pullover-Sweatshirt-Sweater/dp/B0H74RFN74/"
-  },
-
   {
     name: "adidas Handball Spezial",
-    price: "$100+",
-    category: "Shoes",
+    price: "$110",
+    range: "100plus",
+    category: "shoes",
+    categoryLabel: "Shoes",
     size: "Men's 10",
     image: "samba spezial.webp",
-    link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html"
+    link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html",
+    note: "Your chosen KZ6703 colorway."
   },
-
   {
-    name: "Nike Dunks",
-    price: "$100+",
-    category: "Shoes",
+    name: "Men's PSD 2-Pack",
+    price: "About $25",
+    range: "under50",
+    category: "clothing",
+    categoryLabel: "Clothing",
+    size: "Men's Medium",
+    image: "PSD.avif",
+    link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322",
+    note: "Your original Target camo selection."
+  },
+  {
+    name: "Parker Baggy Jorts",
+    price: "About $32",
+    range: "under50",
+    category: "clothing",
+    categoryLabel: "Clothing",
+    size: "30 waist / 30 length",
+    image: "Jorts.webp",
+    link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510",
+    note: "Light Blue Tint. Check the waist/length selector at PacSun."
+  },
+  {
+    name: "Nike Dunk Low Retro",
+    price: "Price varies",
+    range: "50to100",
+    category: "shoes",
+    categoryLabel: "Shoes",
     size: "Men's 10",
     image: "Nike Dunks.avif",
-    link: "https://www.nike.com/t/dunk-low-retro-mens-shoes-5FQWGR/II7078-200"
+    link: "https://www.nike.com/t/dunk-low-retro-mens-shoes-5FQWGR/II7078-200",
+    note: "Your selected Nike colorway; sale pricing can change."
   },
-
   {
     name: "ASICS GEL-KAYANO 14",
-    price: "$100+",
-    category: "Shoes / Running",
+    price: "About $170",
+    range: "100plus",
+    category: "shoes",
+    categoryLabel: "Shoes",
     size: "Men's 10",
     image: "gel kayano 14.webp",
-    link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html"
+    link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html",
+    note: "Your selected White / style 1203A537-110."
   },
-
   {
-    name: "Birkenstock Bostons",
-    price: "$100+",
-    category: "Shoes",
+    name: "JMIERR Quarter Zip",
+    price: "Check current price",
+    range: "under50",
+    category: "clothing",
+    categoryLabel: "Clothing",
+    size: "Small",
+    image: "Quarter Zip.jpg",
+    link: "https://www.amazon.com/dp/B0H74RFN74",
+    note: "Your original Amazon quarter zip."
+  },
+  {
+    name: "Nike Vomero Plus",
+    price: "About $180",
+    range: "100plus",
+    category: "shoes",
+    categoryLabel: "Shoes",
     size: "Men's 10",
-    image: "Birkenstock Bostons.webp",
-    link: "https://www.dickssportinggoods.com/p/birkenstock-mens-boston-soft-footbed-casual-shoes-20birmbstnsftftbdfot/20birmbstnsftftbdfot?color=Black"
+    image: "",
+    link: "https://www.dickssportinggoods.com/p/nike-mens-vomero-plus-running-shoes-25nikmrunnvmrplsbleea/25nikmrunnvmrplsbleea?color=Sequoia%2FDusty%20Olive-Light%20Bone",
+    note: "Sequoia / Dusty Olive / Light Bone."
+  },
+  {
+    name: "SodaStream Classic Maker",
+    price: "$68.97",
+    range: "50to100",
+    category: "tech",
+    categoryLabel: "Home & tech",
+    size: "Black",
+    image: "https://i5.walmartimages.com/seo/Sodastream-Classic-Starter-Kit-Black_e5571216-4505-4e0d-a665-24d0aa08248a.7da2fcf9b15e31706e208755f2398611.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576",
+    link: "https://www.walmart.com/ip/Sodastream-Classic-Starter-Kit-Black/19716063755",
+    note: "Walmart listing; includes the starter kit. Cylinder exchange rules may apply."
+  },
+  {
+    name: "Cleanlogic Silicone Body Scrubber",
+    price: "$7.97",
+    range: "under50",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "1-count",
+    image: "https://i5.walmartimages.com/asr/73fbf360-6b05-4f7e-bddb-714281f29faa.b2ed7844111d59bfdcbdeca03642868a.jpeg?odnBg=FFFFFF&odnHeight=576&odnWidth=576",
+    link: "https://www.walmart.com/ip/Cleanlogic-Silicone-Body-Scrubber-All-Skin-Types-1-Count/2157965325",
+    note: "Walmart listing; price checked November 8."
+  },
+  {
+    name: "Bath & Body Works Cologne Mini Gift Set",
+    price: "$15.95",
+    range: "under50",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "Mini set",
+    image: "",
+    link: "https://www.bathandbodyworks.com/c/gifts/gifts-for-him",
+    note: "Closest current official option: men's mini gift sets. BBW says it does not send scent samples."
+  },
+  {
+    name: "Dr.Dent Purple Mouthwash",
+    price: "$24.99",
+    range: "under50",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "20 single-use sachets",
+    image: "",
+    link: "https://drdentcare.com/products/purple-mouthwash",
+    note: "Color-correcting cosmetic rinse, not a replacement for regular oral care."
+  },
+  {
+    name: "Dr.Dent Purple Toothpaste Tablets",
+    price: "$27",
+    range: "under50",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "90 tablets",
+    image: "https://drdent.co/cdn/shop/files/toothpastetablets.png?v=1790635229&width=1000",
+    link: "https://drdent.co/en-us/products/toothpaste-tablets",
+    note: "Fluoride-free. Ask your dentist before replacing your regular fluoride toothpaste."
+  },
+  {
+    name: "BASED Hair Products",
+    price: "$20–$27",
+    range: "under50",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "Choose product",
+    image: "",
+    link: "https://based.com/collections/hair",
+    note: "Official collection: texture powder, sea salt spray, clay, and more."
+  },
+  {
+    name: "Oral-B iO Series 3 Electric Toothbrush",
+    price: "$69.99 sale",
+    range: "50to100",
+    category: "grooming",
+    categoryLabel: "Grooming",
+    size: "Black",
+    image: "https://target.scene7.com/is/image/Target/GUEST_5479b72e-d769-4472-93e2-9d82aade0d6d?fmt=pjpeg&hei=600&wid=600",
+    link: "https://www.target.com/p/oral-b-io3-electric-toothbrush-black/-/A-88693684",
+    note: "Target listing showed in stock at the checked price; stock varies by location."
+  },
+  {
+    name: "VKTRY Gold Insoles",
+    price: "$99 advertised offer",
+    range: "50to100",
+    category: "shoes",
+    categoryLabel: "Shoes & accessories",
+    size: "9 / 9.5",
+    image: "",
+    link: "https://vktry.com/products/vktry-insoles-gold",
+    note: "VKTRY says size 9 or 9.5 shoes use the 9/9.5 insole size. Choose the shoes you wear them in most."
+  },
+  {
+    name: "SunnyD 24-Pack",
+    price: "$22.99",
+    range: "under50",
+    category: "food",
+    categoryLabel: "Food & drinks",
+    size: "24 bottles · 6.75 oz",
+    image: "https://target.scene7.com/is/image/Target/GUEST_4e0f628b-5c64-47ab-96d9-91b1dd3a8f28?fmt=pjpeg&hei=600&wid=600",
+    link: "https://www.target.com/p/sunnyd-tangy-original-orange-citrus-punch-juice-drink-24pk-6-75-fl-oz-bottles/-/A-87911043",
+    note: "Target 24-pack listing. The 18-pack is cheaper if you prefer lower total cost."
+  },
+  {
+    name: "Jelly Belly Assorted Jelly Beans",
+    price: "About $10.59",
+    range: "under50",
+    category: "food",
+    categoryLabel: "Food & drinks",
+    size: "20 flavors · 1.31 lb",
+    image: "",
+    link: "https://www.target.com/b/jelly-belly/-/N-5uxny",
+    note: "Target's Signature 20-flavor assortment; check local availability."
+  },
+  {
+    name: "EA SPORTS College Football 27",
+    price: "$69.99",
+    range: "50to100",
+    category: "tech",
+    categoryLabel: "Games",
+    size: "PS5 digital",
+    image: "",
+    link: "https://store.playstation.com/en-us/product/UP0006-PPSA32814_00-COLLEGEFOOTBAL27",
+    note: "PlayStation Store Standard Edition."
   }
-
 ];
 
+let selectedPrice = "all";
+let selectedCategory = "all";
 
-function showItems(range, button) {
+const itemsContainer = document.getElementById("items");
+const sectionHeading = document.getElementById("sectionHeading");
+const itemCount = document.getElementById("itemCount");
 
-  const itemsContainer = document.getElementById("items");
-  const title = document.getElementById("title");
-  const count = document.getElementById("count");
-
-  document.querySelectorAll(".range-button").forEach(btn => {
-    btn.classList.remove("active");
+function setActiveButtons(groupId, attribute, value) {
+  document.querySelectorAll("#" + groupId + " .filter-button").forEach(button => {
+    button.classList.toggle("active", button.dataset[attribute] === value);
   });
+}
 
-  button.classList.add("active");
+function makePlaceholder(item) {
+  const placeholder = document.createElement("div");
+  placeholder.className = "photo-placeholder";
+  const mark = document.createElement("div");
+  mark.className = "placeholder-mark";
+  mark.textContent = item.category === "food" ? "FOOD" :
+    item.category === "shoes" ? "SHOES" :
+    item.category === "grooming" ? "CARE" :
+    item.category === "tech" ? "TECH" : "ITEM";
+  const caption = document.createElement("span");
+  caption.textContent = "PRODUCT PHOTO COMING SOON";
+  placeholder.append(mark, caption);
+  return placeholder;
+}
 
-  let filteredItems;
+function renderItems() {
+  const filtered = gifts.filter(item =>
+    (selectedPrice === "all" || item.range === selectedPrice) &&
+    (selectedCategory === "all" || item.category === selectedCategory)
+  );
 
-  if (range === "all") {
+  const heading = selectedPrice === "all" ? "Everything" :
+    selectedPrice === "under50" ? "Under $50" :
+    selectedPrice === "50to100" ? "$50–$100" : "$100+";
+  sectionHeading.textContent = selectedCategory === "all" ? heading :
+    heading + " · " + selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1);
+  itemCount.textContent = filtered.length + (filtered.length === 1 ? " item" : " items");
+  itemsContainer.replaceChildren();
 
-    filteredItems = gifts;
-    title.textContent = "Everything";
-
-  } else {
-
-    filteredItems = gifts.filter(item => {
-
-      if (range === "under50") {
-        return item.price === "Under $50";
-      }
-
-      if (range === "50to100") {
-        return item.price === "$50–$100";
-      }
-
-      if (range === "100plus") {
-        return item.price === "$100+";
-      }
-
-      return false;
-
-    });
-
-    if (range === "under50") {
-      title.textContent = "Under $50";
-    }
-
-    if (range === "50to100") {
-      title.textContent = "$50–$100";
-    }
-
-    if (range === "100plus") {
-      title.textContent = "$100+";
-    }
-
-  }
-
-
-  count.textContent = filteredItems.length + " items";
-
-  itemsContainer.innerHTML = "";
-
-
-  if (filteredItems.length === 0) {
-
-    itemsContainer.innerHTML = `
-      <div class="empty">
-        <div class="empty-icon">🎁</div>
-        <strong>Nothing here yet</strong>
-        <div>Maybe a future addition to the list...</div>
-      </div>
-    `;
-
+  if (!filtered.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty";
+    empty.innerHTML = "<strong>No items in this filter yet</strong>Try another price or category.";
+    itemsContainer.appendChild(empty);
     return;
   }
 
-
-  filteredItems.forEach((item, index) => {
-
-    const card = document.createElement("div");
-
+  filtered.forEach((item, index) => {
+    const card = document.createElement("article");
     card.className = "item";
-    card.style.animationDelay = `${index * 0.08}s`;
+    card.style.animationDelay = (index * 0.045) + "s";
 
-    card.innerHTML = `
+    const imageWrap = document.createElement("div");
+    imageWrap.className = "image-wrap";
 
-      <img
-        src="${encodeURI(item.image)}"
-        alt="${item.name}"
-        class="product-image"
-      >
+    if (item.image) {
+      const image = document.createElement("img");
+      image.className = "product-image";
+      image.alt = item.name;
+      image.loading = "lazy";
+      image.src = item.image;
+      image.addEventListener("error", () => {
+        image.replaceWith(makePlaceholder(item));
+      }, { once: true });
+      imageWrap.appendChild(image);
+    } else {
+      imageWrap.appendChild(makePlaceholder(item));
+    }
 
-      <div class="item-info">
+    const info = document.createElement("div");
+    info.className = "item-info";
 
-        <h3>${item.name}</h3>
+    const name = document.createElement("h3");
+    name.textContent = item.name;
 
-        <div class="price">
-          ${item.price}
-        </div>
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = item.price;
 
-        <div class="category">
-          ${item.category}
-        </div>
+    const note = document.createElement("div");
+    note.className = "item-note";
+    note.textContent = item.note || "";
 
-        <div class="size-badge">
-          📏 ${item.size}
-        </div>
+    const metaRow = document.createElement("div");
+    metaRow.className = "meta-row";
 
-        <br>
+    const category = document.createElement("span");
+    category.className = "meta";
+    category.textContent = item.categoryLabel;
+    metaRow.appendChild(category);
 
-        <a
-          href="${item.link}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="view-button"
-        >
-          View Item →
-        </a>
+    if (item.size) {
+      const size = document.createElement("span");
+      size.className = "meta";
+      size.textContent = item.size;
+      metaRow.appendChild(size);
+    }
 
-      </div>
+    const link = document.createElement("a");
+    link.className = "view-button";
+    link.href = item.link;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "View Item →";
 
-    `;
-
+    info.append(name, price, note, metaRow, link);
+    card.append(imageWrap, info);
     itemsContainer.appendChild(card);
-
   });
-
 }
 
+document.querySelectorAll("#priceFilters .filter-button").forEach(button => {
+  button.addEventListener("click", () => {
+    selectedPrice = button.dataset.price;
+    setActiveButtons("priceFilters", "price", selectedPrice);
+    renderItems();
+  });
+});
 
-showItems(
-  "under50",
-  document.querySelector(".range-button")
-);
+document.querySelectorAll("#categoryFilters .filter-button").forEach(button => {
+  button.addEventListener("click", () => {
+    selectedCategory = button.dataset.category;
+    setActiveButtons("categoryFilters", "category", selectedCategory);
+    renderItems();
+  });
+});
 
+renderItems();
 </script>
-
 </body>
 </html>
