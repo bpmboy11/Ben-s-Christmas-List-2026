@@ -99,6 +99,9 @@
     .item h3 { margin:0 0 7px; font-size:18px; line-height:1.25; }
     .price { color:#dce9df; font-weight:800; font-size:15px; }
     .item-note { color:#aebbb2; font-size:12px; line-height:1.45; margin-top:7px; min-height:17px; }
+    .color-options { display:flex; flex-wrap:wrap; gap:7px; margin-top:11px; }
+    .color-option { display:inline-flex; align-items:center; gap:6px; padding:5px 8px; border-radius:999px; background:#26352b; color:#dce9df; font-size:11px; font-weight:700; }
+    .color-dot { width:15px; height:15px; flex:0 0 15px; border-radius:50%; border:1px solid rgba(255,255,255,.45); box-shadow:0 0 0 1px rgba(0,0,0,.15); }
     .meta-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
     .meta { display:inline-block; border-radius:8px; padding:5px 8px; font-size:11px; font-weight:700; background:#29382e; color:#dce9df; }
     .meta.warn { background:#493b21; color:#f1dfb7; }
@@ -238,7 +241,25 @@ const gifts = [
     "size": "Choose size XS–XXL",
     "image": "https://img.hollisterco.com/is/image/anf/KIC_328-6072-00204-908_prod1?policy=product-medium",
     "link": "https://www.hollisterco.com/shop/us/p/at-the-knee-baggy-fleece-shorts-63998320?seq=03",
-    "note": "All four swatches shown: Black (two black swatches), Heather Gray, and Dark Gray. Open Hollister to choose the exact shade and size."
+    "note": "All four color swatches from your screenshot are shown below. Open Hollister to select your shade and size.",
+    "colorOptions": [
+      {
+        "label": "Black",
+        "swatch": "#222222"
+      },
+      {
+        "label": "Black",
+        "swatch": "#101010"
+      },
+      {
+        "label": "Heather Gray",
+        "swatch": "#d4d4d4"
+      },
+      {
+        "label": "Dark Gray",
+        "swatch": "#565b62"
+      }
+    ]
   },
   {
     "name": "Nike Dunk Low Retro SE",
@@ -351,15 +372,15 @@ const gifts = [
     "note": "Target's black model listing."
   },
   {
-    "name": "SunnyD 24-Pack",
-    "price": "$22.99",
+    "name": "SunnyD Sport-Cap Bottles (15-Pack)",
+    "price": "$9.49",
     "range": "under50",
     "category": "food",
     "categoryLabel": "Food & drinks",
-    "size": "24 bottles · 6.75 oz",
-    "image": "https://i5.walmartimages.com/seo/SUNNYD-Tangy-Original-Shelf-Stable-Orange-Juice-Drink-12-Count-6-75-fl-oz-Bottles_aa47ac46-34b8-40d1-80f1-6b6bce07cad4.17c1b24e231bebdb7d09b71dbea16bb6.jpeg?odnBg=FFFFFF&odnHeight=580&odnWidth=580",
-    "link": "https://www.target.com/p/sunnyd-tangy-original-orange-citrus-punch-juice-drink-24pk-6-75-fl-oz-bottles/-/A-87911043",
-    "note": "24-pack from Target. Updated product photo shows the blue sports/sipper-style cap."
+    "size": "15 bottles · 11.3 fl oz each · reclosable sport cap",
+    "image": "https://i5.walmartimages.com/asr/e83231c3-27a0-4957-bb0c-0f7ac82a6e30.83f0b8630f7cfdbd33e128a9f5ba33e5.jpeg",
+    "link": "https://www.meijer.com/shopping/product/11-3-fluid-ounces-x-15/5020001329",
+    "note": "Exact sport-cap version: 15 bottles, each with a reclosable sports cap. Meijer lists it at $9.49."
   },
   {
     "name": "Jelly Belly Assorted Jelly Beans",
@@ -507,6 +528,23 @@ function renderItems() {
     const note = document.createElement("div");
     note.className = "item-note";
     note.textContent = item.note || "";
+
+    if (item.colorOptions && item.colorOptions.length) {
+      const colorOptions = document.createElement("div");
+      colorOptions.className = "color-options";
+      item.colorOptions.forEach(option => {
+        const colorOption = document.createElement("span");
+        colorOption.className = "color-option";
+        const dot = document.createElement("span");
+        dot.className = "color-dot";
+        dot.style.backgroundColor = option.swatch;
+        const label = document.createElement("span");
+        label.textContent = option.label;
+        colorOption.append(dot, label);
+        colorOptions.appendChild(colorOption);
+      });
+      info.appendChild(colorOptions);
+    }
 
     const metaRow = document.createElement("div");
     metaRow.className = "meta-row";
