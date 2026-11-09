@@ -529,8 +529,9 @@ function renderItems() {
     note.className = "item-note";
     note.textContent = item.note || "";
 
+    let colorOptions = null;
     if (item.colorOptions && item.colorOptions.length) {
-      const colorOptions = document.createElement("div");
+      colorOptions = document.createElement("div");
       colorOptions.className = "color-options";
       item.colorOptions.forEach(option => {
         const colorOption = document.createElement("span");
@@ -543,7 +544,6 @@ function renderItems() {
         colorOption.append(dot, label);
         colorOptions.appendChild(colorOption);
       });
-      info.appendChild(colorOptions);
     }
 
     const metaRow = document.createElement("div");
@@ -568,7 +568,9 @@ function renderItems() {
     link.rel = "noopener noreferrer";
     link.textContent = "View Item →";
 
-    info.append(name, price, note, metaRow, link);
+    info.append(name, price, note);
+    if (colorOptions) info.appendChild(colorOptions);
+    info.append(metaRow, link);
     card.append(imageWrap, info);
     itemsContainer.appendChild(card);
   });
