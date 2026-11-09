@@ -162,6 +162,7 @@
         <button class="filter-button" data-price="under50">Under $50</button>
         <button class="filter-button" data-price="50to100">$50–$100</button>
         <button class="filter-button" data-price="100plus">$100+</button>
+        <button class="filter-button" data-price="unknown">Price TBD</button>
       </div>
 
       <span class="filter-label">Filter by category</span>
@@ -172,6 +173,7 @@
         <button class="filter-button" data-category="tech">Tech & games</button>
         <button class="filter-button" data-category="grooming">Grooming</button>
         <button class="filter-button" data-category="food">Food & drinks</button>
+        <button class="filter-button" data-category="other">Other</button>
       </div>
     </section>
 
@@ -195,202 +197,224 @@
 <script>
 const gifts = [
   {
-    name: "adidas Handball Spezial",
-    price: "price: 10",
-    range: "100plus",
-    category: "shoes",
-    categoryLabel: "Shoes",
-    size: "Men's 10",
-    image: "samba spezial.webp",
-    link: "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html",
-    note: "Your KZ6703 Beige / Gum colorway. Adidas' official US listing shows Men's 10 as an available size option."
+    "name": "adidas Handball Spezial",
+    "price": "$110",
+    "range": "100plus",
+    "category": "shoes",
+    "categoryLabel": "Shoes",
+    "size": "Men's 10.5",
+    "image": "samba spezial.webp",
+    "link": "https://www.adidas.com/us/handball-spezial-shoes/KZ6703.html",
+    "note": "KZ6703 · Khaki Three / Off White / Gum. Adidas lists Men's 10.5 as a size option."
   },
   {
-    name: "Men's PSD 2-Pack",
-    price: "About $25",
-    range: "under50",
-    category: "clothing",
-    categoryLabel: "Clothing",
-    size: "Men's Medium",
-    image: "PSD.avif",
-    link: "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322",
-    note: "Your original Target camo selection."
+    "name": "Men's PSD 2-Pack",
+    "price": "About $25",
+    "range": "under50",
+    "category": "clothing",
+    "categoryLabel": "Clothing",
+    "size": "Men's Medium",
+    "image": "PSD.avif",
+    "link": "https://www.target.com/p/psd-men-39-s-2pk-camo-mode-boxer-briefs-urban-camo-blue-camo/-/A-95218636?preselect=95171322",
+    "note": "Your original Target camo selection."
   },
   {
-    name: "Parker Baggy Jorts",
-    price: "$32.47 pre-order",
-    range: "under50",
-    category: "clothing",
-    categoryLabel: "Clothing",
-    size: "30/30 requested",
-    image: "Jorts.webp",
-    link: "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510",
-    note: "Pacsun lists waist sizes and a 10-inch inseam, not a 30-inch length. Size 30 is listed; double-check the fit before ordering."
+    "name": "Parker Baggy Jorts",
+    "price": "$32.47",
+    "range": "under50",
+    "category": "clothing",
+    "categoryLabel": "Clothing",
+    "size": "30 waist requested",
+    "image": "Jorts.webp",
+    "link": "https://www.pacsun.com/pacsun/parker-baggy-jean-shorts-light-blue-tint-0170604890030.html?dwvar_0170604890030_color=510",
+    "note": "Light Blue Tint. The product page uses waist sizing and lists a 10-inch shorts inseam; confirm the size selector before ordering."
   },
   {
-    name: "Nike Dunk Low Retro",
-    price: "$74.97 sale",
-    range: "50to100",
-    category: "shoes",
-    categoryLabel: "Shoes",
-    size: "Men's 10",
-    image: "Nike Dunks.avif",
-    link: "https://www.nike.com/t/dunk-low-retro-se-mens-shoes-RrfSUR27/II7078-200",
-    note: "Nike's official page lists $74.97 (down from note: 30) and shows Men's 10 as a size option."
+    "name": "Hollister Feel Good At-the-Knee Baggy Fleece Shorts",
+    "price": "$34.95",
+    "range": "under50",
+    "category": "clothing",
+    "categoryLabel": "Clothing",
+    "size": "Choose size XS–XXL",
+    "image": "https://img.hollisterco.com/is/image/anf/KIC_328-6072-00204-908_prod1?policy=product-medium",
+    "link": "https://www.hollisterco.com/shop/us/p/at-the-knee-baggy-fleece-shorts-63998320?seq=03",
+    "note": "All four swatches shown: Black (two black swatches), Heather Gray, and Dark Gray. Open Hollister to choose the exact shade and size."
   },
   {
-    name: "ASICS GEL-KAYANO 14",
-    price: "price: 65",
-    range: "100plus",
-    category: "shoes",
-    categoryLabel: "Shoes",
-    size: "Men's 10",
-    image: "gel kayano 14.webp",
-    link: "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html",
-    note: "White / Graphite Grey, style 1203A537-110. ASICS lists GEL-KAYANO 14 models at note: 65; confirm this exact color and Men's 10 at checkout."
+    "name": "Nike Dunk Low Retro SE",
+    "price": "$74.97 sale",
+    "range": "50to100",
+    "category": "shoes",
+    "categoryLabel": "Shoes",
+    "size": "Men's 10.5",
+    "image": "Nike Dunks.avif",
+    "link": "https://www.nike.com/t/dunk-low-retro-se-mens-shoes-RrfSUR27/II7078-200",
+    "note": "Moon Particle / Photon Dust / Coconut Milk / White. Nike lists Men's 10.5 as a size option."
   },
   {
-    name: "JMIERR Quarter Zip",
-    price: "Check current price",
-    range: "under50",
-    category: "clothing",
-    categoryLabel: "Clothing",
-    size: "Small",
-    image: "Quarter Zip.jpg",
-    link: "https://www.amazon.com/dp/B0H74RFN74",
-    note: "Your original Amazon quarter zip."
+    "name": "ASICS GEL-KAYANO 14",
+    "price": "$165",
+    "range": "100plus",
+    "category": "shoes",
+    "categoryLabel": "Shoes",
+    "size": "Men's 10.5",
+    "image": "gel kayano 14.webp",
+    "link": "https://www.asics.com/us/en-us/gel-kayano-14/p/ANA_1203A537-110.html",
+    "note": "White / Graphite Grey · style 1203A537-110. Check Men's 10.5 availability on the ASICS page."
   },
   {
-    name: "Nike Vomero Plus",
-    price: "price: 36.97 sale",
-    range: "100plus",
-    category: "shoes",
-    categoryLabel: "Shoes",
-    size: "Men's 10 · Hydrogen Blue / Black / White / Orange",
-    image: "https://cdn.sneakersquad.nl/uploads/sneakers/HV8150-404.avif?bg=FFF&fit=fill&fm=webp&h=1200&pad=40&signature=3175a6e7&trim=auto&trim-sd=1&v=1775143301&w=1200",
-    link: "https://www.nike.com/t/vomero-plus-mens-road-running-shoes-5npsVBwT/HV8150-404",
-    note: "The blue colorway in your screenshot. Nike lists it at note: 36.97; DICK'S listed the same shoe at about note: 80."
+    "name": "Nike Vomero Plus",
+    "price": "$179.99–$184.99",
+    "range": "100plus",
+    "category": "shoes",
+    "categoryLabel": "Shoes",
+    "size": "Men's 10.5 · Hydrogen Blue / Black / White / Orange",
+    "image": "https://www.paceathletic.com/cdn/shop/files/Mens-Nike-Vomero-Plus-Hydrogen-Blue-Black-White-Total-Orange-HV8150-404-3.jpg?v=1777513012&width=1000",
+    "link": "https://www.dickssportinggoods.com/p/nike-mens-vomero-plus-running-shoes-25nikmrunnvmrplsbleea/25nikmrunnvmrplsbleea?categoryId=702754&color=Hydrogen+Blue%2FBlack%2FWhite%2FOrng",
+    "note": "Correct blue/orange colorway from your screenshot · Nike style HV8150-404. DICK'S shows this color at $179.99–$184.99 and lists Men's 10.5."
   },
   {
-    name: "SodaStream Classic Maker",
-    price: "$68.99",
-    range: "50to100",
-    category: "tech",
-    categoryLabel: "Home & tech",
-    size: "Black",
-    image: "https://target.scene7.com/is/image/Target/GUEST_08d69c2c-fad6-471a-bf08-7f46aedd96f3?fmt=pjpeg&hei=300&wid=300",
-    link: "https://www.target.com/p/-/A-1011142566",
-    note: "Target's Classic Sparkling Water Maker Kit, Black. Includes a bottle and a CO₂ cylinder."
+    "name": "SodaStream Classic Maker",
+    "price": "$68.99",
+    "range": "50to100",
+    "category": "tech",
+    "categoryLabel": "Home & tech",
+    "size": "Black",
+    "image": "https://target.scene7.com/is/image/Target/GUEST_08d69c2c-fad6-471a-bf08-7f46aedd96f3?fmt=pjpeg&hei=300&wid=300",
+    "link": "https://www.target.com/p/-/A-1011142566",
+    "note": "Target's Classic Sparkling Water Maker Kit, Black."
   },
   {
-    name: "Cleanlogic Silicone Body Scrubber",
-    price: "$7.97",
-    range: "under50",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "1-count",
-    image: "https://i5.walmartimages.com/seo/Cleanlogic-Silicone-Body-Scrubber-All-Skin-Types-1-Count_73fbf360-6b05-4f7e-bddb-714281f29faa.b2ed7844111d59bfdcbdeca03642868a.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
-    link: "https://www.walmart.com/ip/2157965325",
-    note: "One-count silicone body scrubber from Walmart."
+    "name": "Cleanlogic Silicone Body Scrubber",
+    "price": "$7.97",
+    "range": "under50",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "1-count",
+    "image": "https://i5.walmartimages.com/seo/Cleanlogic-Silicone-Body-Scrubber-All-Skin-Types-1-Count_73fbf360-6b05-4f7e-bddb-714281f29faa.b2ed7844111d59bfdcbdeca03642868a.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+    "link": "https://www.walmart.com/ip/2157965325",
+    "note": "One-count silicone body scrubber from Walmart."
   },
   {
-    name: "Bath & Body Works Cologne Tester Kit",
-    price: "Check availability",
-    range: "under50",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "4-scent discovery kit",
-    image: "https://di2ponv0v5otw.cloudfront.net/posts/2024/11/10/6730d0b85af6e6c978c7537d/m_6730d0d59a76ef4be6227f05.jpg",
-    link: "https://www.bathandbodyworks.com/c/gifts/gifts-for-him",
-    note: "Reference photo of the four-scent Men's Collection discovery kit. I could not verify a current official listing for this exact kit, so the link goes to Bath & Body Works' current men's gifts."
+    "name": "Sephora Favorites Holiday Men's Cologne Sampler",
+    "price": "$98",
+    "range": "50to100",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "14 sample fragrances + redeemable voucher",
+    "image": "https://www.sephora.com/productimages/sku/s3027828-main-zoom.jpg?imwidth=1224",
+    "link": "https://www.sephora.com/product/holiday-mens-cologne-sampler-gift-set-w-redeemable-voucher-P526132?skuId=3027828",
+    "note": "The Sephora tester kit. Sephora marks this limited-edition set final sale, with no returns or exchanges."
   },
   {
-    name: "Dr.Dent Purple Mouthwash",
-    price: "$24.99",
-    range: "under50",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "20 single-use sachets",
-    image: "https://drdentcare.com/cdn/shop/files/Purple_Mouthwash.png?v=1780942460&width=2048",
-    link: "https://drdentcare.com/products/purple-mouthwash",
-    note: "20 single-use sachets from Dr.Dent. Color-correcting cosmetic rinse, not a replacement for regular oral care."
+    "name": "Dr.Dent Purple Mouthwash",
+    "price": "$24.99",
+    "range": "under50",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "20 single-use sachets",
+    "image": "https://drdentcare.com/cdn/shop/files/Purple_Mouthwash.png?v=1780942460&width=2048",
+    "link": "https://drdentcare.com/products/purple-mouthwash",
+    "note": "20 single-use sachets from Dr.Dent. Color-correcting cosmetic rinse, not a replacement for regular oral care."
   },
   {
-    name: "Dr.Dent Purple Toothpaste Tablets",
-    price: "price: 9.99",
-    range: "under50",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "90 chewable tablets",
-    image: "https://m.media-amazon.com/images/I/71Tf5B3HFOL._AC_SL1500_.jpg",
-    link: "https://www.amazon.com/Toothpaste-Hydroxyapatite-Color-Correcting-Whitening-Fluoride-Free/dp/B0GTWR8BGN",
-    note: "This is the exact 90-count Amazon product shown in your screenshot. Fluoride-free; ask your dentist before replacing regular fluoride toothpaste."
+    "name": "Dr.Dent Purple Toothpaste Tablets",
+    "price": "$19.99",
+    "range": "under50",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "90 chewable tablets",
+    "image": "https://m.media-amazon.com/images/I/71Tf5B3HFOL._AC_SL1500_.jpg",
+    "link": "https://www.amazon.com/Toothpaste-Hydroxyapatite-Color-Correcting-Whitening-Fluoride-Free/dp/B0GTWR8BGN",
+    "note": "Exact 90-count Amazon listing from your screenshot. Fluoride-free; ask your dentist before replacing regular fluoride toothpaste."
   },
   {
-    name: "BASED Texture Essentials Duo",
-    price: "$36 promo shown",
-    range: "under50",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "Choose product",
-    image: "https://based.com/cdn/shop/files/lkaskla25.png?v=1777230325&width=1600",
-    link: "https://based.com/products/texture-essentials",
-    note: "Official BASED duo: Texture Powder and Sea Salt Spray. Promotion may change."
+    "name": "BASED Texture Essentials Duo",
+    "price": "$36",
+    "range": "under50",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "Texture Powder + Sea Salt Spray",
+    "image": "https://based.com/cdn/shop/files/lkaskla25.png?v=1777230325&width=1600",
+    "link": "https://based.com/products/texture-essentials",
+    "note": "Official BASED Texture Essentials duo. Promotion may change."
   },
   {
-    name: "Oral-B iO Series 3 Electric Toothbrush",
-    price: "$69.99 sale",
-    range: "50to100",
-    category: "grooming",
-    categoryLabel: "Grooming",
-    size: "Black",
-    image: "https://target.scene7.com/is/image/Target/GUEST_5479b72e-d769-4472-93e2-9d82aade0d6d?fmt=pjpeg&hei=300&wid=300",
-    link: "https://www.target.com/p/oral-b-io3-electric-toothbrush-black/-/A-88693684",
-    note: "Target lists the black model at $69.99, reduced from $89.99, and currently marks it in stock."
+    "name": "Oral-B iO Series 3 Electric Toothbrush",
+    "price": "$69.99 sale",
+    "range": "50to100",
+    "category": "grooming",
+    "categoryLabel": "Grooming",
+    "size": "Black",
+    "image": "https://target.scene7.com/is/image/Target/GUEST_5479b72e-d769-4472-93e2-9d82aade0d6d?fmt=pjpeg&hei=300&wid=300",
+    "link": "https://www.target.com/p/oral-b-io3-electric-toothbrush-black/-/A-88693684",
+    "note": "Target's black model listing."
   },
   {
-    name: "VKTRY Gold Insoles",
-    price: "$99 promo shown",
-    range: "50to100",
-    category: "shoes",
-    categoryLabel: "Shoes & accessories",
-    size: "Men's shoe size 9.5",
-    image: "https://vktry.com/cdn/shop/files/vk-still.png?v=1790040852&width=1000",
-    link: "https://vktry.com/products/vktry-insoles-gold",
-    note: "VKTRY currently shows $99 (was note: 49). Its customizer asks for age, sport, shoe size, and weight, so check fit and suitability with a parent or coach before ordering."
+    "name": "SunnyD 24-Pack",
+    "price": "$22.99",
+    "range": "under50",
+    "category": "food",
+    "categoryLabel": "Food & drinks",
+    "size": "24 bottles · 6.75 oz",
+    "image": "https://i5.walmartimages.com/seo/SUNNYD-Tangy-Original-Shelf-Stable-Orange-Juice-Drink-12-Count-6-75-fl-oz-Bottles_aa47ac46-34b8-40d1-80f1-6b6bce07cad4.17c1b24e231bebdb7d09b71dbea16bb6.jpeg?odnBg=FFFFFF&odnHeight=580&odnWidth=580",
+    "link": "https://www.target.com/p/sunnyd-tangy-original-orange-citrus-punch-juice-drink-24pk-6-75-fl-oz-bottles/-/A-87911043",
+    "note": "24-pack from Target. Updated product photo shows the blue sports/sipper-style cap."
   },
   {
-    name: "SunnyD 24-Pack",
-    price: "$22.99",
-    range: "under50",
-    category: "food",
-    categoryLabel: "Food & drinks",
-    size: "24 bottles · 6.75 oz",
-    image: "https://target.scene7.com/is/image/Target/GUEST_4f6b8c09-b1b4-42f3-9472-e6d8a39dc40a?fmt=pjpeg&hei=300&wid=300",
-    link: "https://www.target.com/p/sunnyd-tangy-original-orange-citrus-punch-juice-drink-24pk-6-75-fl-oz-bottles/-/A-87911043",
-    note: "Target lists the 24-pack of 6.75 fl oz bottles at $22.99 and in stock."
+    "name": "Jelly Belly Assorted Jelly Beans",
+    "price": "$11.12",
+    "range": "under50",
+    "category": "food",
+    "categoryLabel": "Food & drinks",
+    "size": "20 flavors · 1.31 lb",
+    "image": "https://i5.walmartimages.com/seo/Jelly-Belly-Signature-20-Collection-Jelly-Beans-1-Stand-Up-Bag-Premium-Jelly-Beans-for-the-Flavor-Aficionado-Assortment-May-Vary-1-31-lb_a1634edb-a82c-4d56-bfef-17cd26492d9e.115ceb0caaa1aa89a8cab028a9e40533.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
+    "link": "https://www.walmart.com/ip/17404901802",
+    "note": "Walmart's Signature 20 Collection, 1.31 lb. Sold and shipped by Walmart."
   },
   {
-    name: "Jelly Belly Assorted Jelly Beans",
-    price: "price: 1.12",
-    range: "under50",
-    category: "food",
-    categoryLabel: "Food & drinks",
-    size: "20 flavors · 1.31 lb",
-    image: "https://i5.walmartimages.com/seo/Jelly-Belly-Signature-20-Collection-Jelly-Beans-1-Stand-Up-Bag-Premium-Jelly-Beans-for-the-Flavor-Aficionado-Assortment-May-Vary-1-31-lb_a1634edb-a82c-4d56-bfef-17cd26492d9e.115ceb0caaa1aa89a8cab028a9e40533.jpeg?odnBg=FFFFFF&odnHeight=573&odnWidth=573",
-    link: "https://www.walmart.com/ip/17404901802",
-    note: "Walmart's Signature 20 Collection, 1.31 lb. Sold and shipped by Walmart."
+    "name": "EA SPORTS College Football 27",
+    "price": "$69.99",
+    "range": "50to100",
+    "category": "tech",
+    "categoryLabel": "Games",
+    "size": "PS5 digital",
+    "image": "https://image.api.playstation.com/vulcan/ap/rnd/202605/2809/e9c5096ea5e3e3167af09b223251f0bf86a8daf0b726642a.png",
+    "link": "https://store.playstation.com/en-us/product/UP0006-PPSA32814_00-COLLEGEFOOTBAL27",
+    "note": "PS5 Standard Edition, digital. Official PlayStation Store price."
   },
   {
-    name: "EA SPORTS College Football 27",
-    price: "$69.99",
-    range: "50to100",
-    category: "tech",
-    categoryLabel: "Games",
-    size: "PS5 digital",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202605/2809/e9c5096ea5e3e3167af09b223251f0bf86a8daf0b726642a.png",
-    link: "https://store.playstation.com/en-us/product/UP0006-PPSA32814_00-COLLEGEFOOTBAL27",
-    note: "PS5 Standard Edition, digital. Official PlayStation Store price."
+    "name": "Supreme x Hanes Crew Socks (4-Pack)",
+    "price": "$47",
+    "range": "under50",
+    "category": "clothing",
+    "categoryLabel": "Clothing",
+    "size": "One size · White",
+    "image": "https://us.supreme.com/cdn/shop/files/h8iZc0Wh6Do_1024x.jpg?v=1715778913",
+    "link": "https://www.stadiumgoods.com/products/hanes-socks-4-white-005181?variant=44192619331780",
+    "note": "The Shop link resolves to Supreme x Hanes socks. Stadium Goods lists them for $47 and advertises authenticity checks."
+  },
+  {
+    "name": "BAPE ABC Camo Big Ape Head Tee",
+    "price": "$125",
+    "range": "100plus",
+    "category": "clothing",
+    "categoryLabel": "Clothing",
+    "size": "Select size on product page",
+    "image": "https://us.bape.com/cdn/shop/files/001TEL801006_BK9_A.jpg?v=1757545901&width=1920",
+    "link": "https://shop.com/products/8955134050482/abc-camo-big-ape-head-tee-mens?variantId=47773513842866",
+    "note": "Your Shop link for the BAPE ABC Camo Big Ape Head Tee. The listing identifies us.bape.com as the store."
+  },
+  {
+    "name": "SHOP.COM Item · Details Needed",
+    "price": "See listing",
+    "range": "unknown",
+    "category": "other",
+    "categoryLabel": "Other",
+    "size": "Product name not available",
+    "image": "",
+    "link": "https://shop.com/products/9194120413412?variantId=49666839970020",
+    "note": "I kept your exact Shop link, but the product title and photos would not load in search, so this card is intentionally left unidentified."
   }
 ];
 
@@ -428,9 +452,13 @@ function renderItems() {
     (selectedCategory === "all" || item.category === selectedCategory)
   );
 
-  const heading = selectedPrice === "all" ? "Everything" :
-    selectedPrice === "under50" ? "Under $50" :
-    selectedPrice === "50to100" ? "$50–$100" : "$100+";
+  const heading = {
+    all: "Everything",
+    under50: "Under $50",
+    "50to100": "$50–$100",
+    "100plus": "$100+",
+    unknown: "Price TBD"
+  }[selectedPrice] || "Everything";
   sectionHeading.textContent = selectedCategory === "all" ? heading :
     heading + " · " + selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1);
   itemCount.textContent = filtered.length + (filtered.length === 1 ? " item" : " items");
