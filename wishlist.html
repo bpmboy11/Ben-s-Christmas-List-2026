@@ -131,9 +131,54 @@
     @media (prefers-reduced-motion:reduce) {
       *,*::before,*::after { animation:none!important; transition:none!important; }
     }
+
+    /* Festive bulbs around the screen edges */
+    .border-lights {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .light-wire {
+      position: absolute;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    .light-wire.top { top: 0; left: 0; right: 0; height: 20px; }
+    .light-wire.bottom { bottom: 0; left: 0; right: 0; height: 20px; transform: rotate(180deg); }
+    .light-wire.left { top: 0; bottom: 0; left: 0; width: 18px; flex-direction: column; align-items: flex-start; }
+    .light-wire.right { top: 0; bottom: 0; right: 0; width: 18px; flex-direction: column; align-items: flex-end; }
+    .edge-bulb {
+      display: block;
+      width: 9px;
+      height: 13px;
+      margin-top: -2px;
+      border-radius: 45% 45% 50% 50%;
+      background: var(--bulb);
+      box-shadow: 0 0 7px var(--bulb), 0 0 15px color-mix(in srgb, var(--bulb) 55%, transparent);
+      animation: edgeGlow 1.6s ease-in-out infinite alternate;
+    }
+    .edge-bulb:nth-child(3n) { animation-delay: .35s; }
+    .edge-bulb:nth-child(3n + 1) { animation-delay: .7s; }
+    @keyframes edgeGlow {
+      from { opacity: .48; filter: brightness(.8); transform: scale(.88); }
+      to { opacity: 1; filter: brightness(1.25); transform: scale(1.08); }
+    }
+    @media (prefers-reduced-motion: reduce) { .edge-bulb { animation: none; } }
+
   </style>
 </head>
 <body>
+
+  <div class="border-lights" aria-hidden="true">
+    <div class="light-wire top"></div>
+    <div class="light-wire bottom"></div>
+    <div class="light-wire left"></div>
+    <div class="light-wire right"></div>
+  </div>
+
 <div class="page">
   <div class="snow" aria-hidden="true">
     <div class="flake">❄</div><div class="flake">•</div><div class="flake">❄</div>
@@ -649,5 +694,20 @@ document.querySelectorAll("#categoryFilters .filter-button").forEach(button => {
 
 renderItems();
 </script>
+
+  <script>
+    (() => {
+      const colors = ["#ff4545", "#35d46b", "#ffd34e", "#5ab7ff", "#f5f5f5"];
+      document.querySelectorAll(".light-wire").forEach((wire, edgeIndex) => {
+        for (let n = 0; n < 18; n++) {
+          const bulb = document.createElement("span");
+          bulb.className = "edge-bulb";
+          bulb.style.setProperty("--bulb", colors[(n + edgeIndex) % colors.length]);
+          wire.appendChild(bulb);
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
